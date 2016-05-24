@@ -5,6 +5,7 @@ export * from './loading';
 export * from './modal';
 export * from './notification';
 export * from './notifications';
+export * from './preloader';
 export * from './page';
 export * from './pagination';
 export * from './panel';

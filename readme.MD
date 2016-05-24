@@ -44,4 +44,5 @@ A React Webpack Skeleton implementing the layout for React Blur Admin and using 
 - Bootstrap-Switch CSS
 - Blur CSS
 - EventEmitter implemented in lib/event-bus so that notifications can listen for a new notification from anywhere without any specific implementation of flux
+- Utilizes Flexbox for columns/rows
 
