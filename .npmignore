@@ -1,1 +1,6 @@
+.babelrc
+.eslintrc
+karma.conf.js
+Makefile
 src
+test
