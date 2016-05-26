@@ -6,7 +6,7 @@ export class Button extends React.Component {
     type: React.PropTypes.string,
     onClick: React.PropTypes.func,
     title: React.PropTypes.string,
-    size: React.PropTypes.string,
+    size: React.PropTypes.oneOf(['xs', 'sm', 'mm', 'md', 'xm', 'lg']),
     disabled: React.PropTypes.bool,
     isIconHidden: React.PropTypes.bool,
     icon: React.PropTypes.element,
