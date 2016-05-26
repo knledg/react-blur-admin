@@ -53,7 +53,7 @@ export class Input extends React.Component {
       return 'warning';
     }
 
-    throw new Error(`Unknown validation result on Input: ${validationResult}`);
+    return '';
   }
 
   /**

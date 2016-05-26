@@ -41,7 +41,7 @@ export class Select extends React.Component {
     const selectedOpt = _.find(this.props.options, { value: selectedValue });
     const value = selectedOpt && selectedOpt.label ? selectedOpt.label : this.props.placeholder;
     this.setState({ isOpen: false, value });
-    this.props.onChange(value);
+    this.props.onChange(selectedValue);
   }
 
   onTextSearch(event) {
