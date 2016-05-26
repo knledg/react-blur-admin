@@ -1,5 +1,5 @@
 
-## [v0.2.1]
+## [v0.2.0]
 > May 26, 2016
 
 - Change Select `onChange` to pass the value to the parent instead of the label.
