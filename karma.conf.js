@@ -25,6 +25,7 @@ module.exports = function(config) {
             query: {
               presets: ['es2015', 'react', 'stage-1'],
             },
+
           },
           {
             test: /\.json$/,
