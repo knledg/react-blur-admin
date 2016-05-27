@@ -5,7 +5,7 @@ export class Switch extends React.Component {
   static propTypes = {
     isOn: React.PropTypes.bool,
     onChange: React.PropTypes.func.isRequired,
-    type: React.PropTypes.string,
+    type: React.PropTypes.oneOf(['primary', 'info', 'warning', 'success', 'danger']),
     className: React.PropTypes.string,
   }
 
