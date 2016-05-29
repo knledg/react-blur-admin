@@ -3,7 +3,7 @@ All credit for the theme goes to [akveo](http://akveo.com/blur-admin/), this is 
 
 Note: This is currently partial implementation of Blur Admin. This repo includes styles from Blur Admin that are required for pages and components to load correctly and the components themselves.
 
-Individual pages/demos/layouts can be found in the React Webpack Skeleton repo.
+Individual pages/demos/layouts can be found in the [React Webpack Skeleton repo](https://github.com/knledg/react-webpack-skeleton).
 
 ### Currently Implemented
 
