@@ -9,6 +9,7 @@ export class Button extends React.Component {
     size: React.PropTypes.string,
     disabled: React.PropTypes.bool,
     isIconHidden: React.PropTypes.bool,
+    icon: React.PropTypes.element,
   }
 
   static defaultProps = {
@@ -16,11 +17,16 @@ export class Button extends React.Component {
     size: 'md',
     disabled: false,
     isIconHidden: false,
+    icon: null,
   }
 
   renderIcon(icon) {
-    if (! icon || this.props.isIconHidden) {
+    if (! (icon || this.props.icon) || this.props.isIconHidden) {
       return null;
+    }
+
+    if (this.props.icon) {
+      return this.props.icon;
     }
 
     return <i className={icon} />;

@@ -52,19 +52,13 @@ export class EditableField extends React.Component {
   }
 
   onTextChange(e) {
-    if (e.keyCode === 27) {
-      return this.onCancelEditing();
-    } else if (e.keyCode === 13) {
-      return this.onSubmit();
-    }
-
     return this.setState({dirtyValue: e.currentTarget.value});
   }
 
   onHandleKeyDown(e) {
-    if (e.keyCode === 27) {
+    if (e.keyCode === 27) { // esc
       return this.onCancelEditing();
-    } else if (e.keyCode === 13) {
+    } else if (e.keyCode === 13) { // enter
       return this.onSubmit();
     }
 

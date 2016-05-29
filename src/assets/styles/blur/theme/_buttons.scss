@@ -256,22 +256,34 @@ button.progress-button {
 }
 
 .dropdown button.btn.btn-default.dropdown-toggle {
-  color: $default-text;
   border: 1px solid $border;
   background-color: transparent;
-  &:focus, &:active {
-    background-color: $default;
-  }
 }
 
-.bootstrap-select {
+.form-group .bootstrap-select.btn-group {
   .dropdown-toggle:focus {
     outline: none !important;
   }
-  button.btn-default:focus {
+
+  button.btn.btn-default {
     color: $default;
+  }
+
+  button.btn.btn-default:hover {
+    color: $default-text;
   }
   .btn {
     transition: none;
   }
 }
+
+.form-group .bootstrap-select.btn-group.open {
+  button.btn.btn-default {
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+
+  button.btn.btn-default:hover {
+    color: $default;
+  }
+}
+
