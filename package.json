@@ -53,6 +53,7 @@
     "karma-chrome-launcher": "^1.0.1",
     "karma-mocha": "^1.0.1",
     "karma-phantomjs-launcher": "^1.0.0",
+    "karma-sinon": "^1.0.5",
     "karma-sourcemap-loader": "^0.3.7",
     "karma-webpack": "^1.7.0",
     "mocha": "^2.5.2",
@@ -61,6 +62,7 @@
     "react": "^15.1.0",
     "react-addons-test-utils": "^15.1.0",
     "react-dom": "^15.1.0",
+    "sinon": "^1.17.4",
     "uglifyjs": "^2.4.10",
     "webpack": "^1.13.1"
   }

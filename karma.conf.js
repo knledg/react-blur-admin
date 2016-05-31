@@ -3,15 +3,15 @@ var path = require('path');
 module.exports = function(config) {
   config.set({
     basePath: '',
-    frameworks: ['mocha'],
+    frameworks: ['mocha', 'sinon'],
     files: [
-      'test/**/*.js'
+      'test/**/*.js',
     ],
 
     preprocessors: {
       // add webpack as preprocessor
       'src/**/*.js': ['webpack', 'sourcemap'],
-      'test/**/*.js': ['webpack', 'sourcemap']
+      'test/**/*.js': ['webpack', 'sourcemap'],
     },
 
     webpack: { //kind of a copy of your webpack config
@@ -23,40 +23,42 @@ module.exports = function(config) {
             loader: 'babel-loader',
             exclude: path.resolve(__dirname, 'node_modules'),
             query: {
-              presets: ['es2015', 'react', 'stage-1']
-            }
+              presets: ['es2015', 'react', 'stage-1'],
+            },
           },
           {
             test: /\.json$/,
             loader: 'json',
           },
-        ]
+        ],
       },
       externals: {
         'cheerio': 'window',
         'react/addons': true,
         'react/lib/ExecutionEnvironment': true,
-        'react/lib/ReactContext': true
-      }
+        'react/lib/ReactContext': true,
+        'sinon': true,
+      },
     },
 
     webpackServer: {
-      noInfo: true //please don't spam the console when running in karma!
+      noInfo: true, //please don't spam the console when running in karma!
     },
 
     plugins: [
-      'karma-webpack',
-      'karma-mocha',
-      'karma-sourcemap-loader',
       'karma-chrome-launcher',
-      'karma-phantomjs-launcher'
+      'karma-mocha',
+      'karma-phantomjs-launcher',
+      'karma-sinon',
+      'karma-sourcemap-loader',
+      'karma-webpack',
     ],
 
 
     babelPreprocessor: {
       options: {
-        presets: ['es2015', 'react', 'stage-1']
-      }
+        presets: ['es2015', 'react', 'stage-1'],
+      },
     },
     reporters: ['dots'],
     port: 9876,
@@ -65,5 +67,5 @@ module.exports = function(config) {
     autoWatch: true,
     browsers: ['Chrome'],
     singleRun: false,
-  })
+  });
 };
