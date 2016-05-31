@@ -1,3 +1,19 @@
+## [v0.4.0]
+> May 31, 2016
+
+**BREAKING CHANGES**
+- Renamed `EditableField` class to `EditableText`
+
+### Select
+- Update this.props.options proptypes to be more specific
+- Show the label for the selected option instead of always showing the placeholder
+
+### EditableSelect class added
+- Just as with EditableText, developers can now utilize an EditableSelect, that shows a static text value and when clicked it will transform into a Select dropdown.
+
+Note: This may have slight UI behavioral changes in the future such as removing the X button and on Esc keypress from the user reverting to static text as well as having the select dropdown be open by default when the static text is clicked.
+
+
 ## [v0.3.0]
 > May 29, 2016
 

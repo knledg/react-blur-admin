@@ -1,6 +1,6 @@
 import React from 'react';
 
-export class EditableField extends React.Component {
+export class EditableText extends React.Component {
 
   static propTypes = {
     onChange: React.PropTypes.func.isRequired,
@@ -8,12 +8,14 @@ export class EditableField extends React.Component {
     value: React.PropTypes.node.isRequired,
     hasError: React.PropTypes.bool,
     errorHelpLabel: React.PropTypes.string,
+    placeholder: React.PropTypes.string,
   }
 
   static defaultProps = {
     value: '',
     hasError: false,
     errorHelpLabel: '',
+    placeholder: 'No Value',
   }
 
   constructor(props) {
@@ -102,7 +104,7 @@ export class EditableField extends React.Component {
     if (! this.state.isBeingEdited) {
       return (
         <span className='editable editable-click' onClick={e => this.onSetEditing(true)}>
-          {this.props.value}
+          {this.props.value || this.props.placeholder}
         </span>
       );
     }

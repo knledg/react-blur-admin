@@ -6,23 +6,29 @@ export class Select extends React.Component {
   static propTypes = {
     placeholder: React.PropTypes.string,
     onChange: React.PropTypes.func,
-    options: React.PropTypes.array,
+    options: React.PropTypes.arrayOf(
+      React.PropTypes.shape({
+        value: React.PropTypes.string,
+        label: React.PropTypes.string,
+      }),
+    ),
     value: React.PropTypes.node,
     isSearchable: React.PropTypes.bool,
   }
 
   static defaultProps = {
     placeholder: '',
-    open: false,
-    onChange: () => {},
+    onChange: _.noop,
     value: '',
     isSearchable: false,
   }
 
   constructor(props) {
     super(props);
+
+    const option = _.find(this.props.options, {value: this.props.value});
     this.state = {
-      value: this.props.placeholder,
+      value: option && option.label || this.props.placeholder,
       activeIndex: 0,
       isOpen: false,
       searchValue: '',

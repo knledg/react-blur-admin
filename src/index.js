@@ -1,5 +1,6 @@
 export * from './button';
-export * from './editable-field';
+export * from './editable-text';
+export * from './editable-select';
 export * from './input';
 export * from './loading';
 export * from './modal';
