@@ -58,7 +58,7 @@ module.exports = function(config) {
         presets: ['es2015', 'react', 'stage-1']
       }
     },
-    reporters: ['progress'],
+    reporters: ['dots'],
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,
