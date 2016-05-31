@@ -4,7 +4,7 @@ import cx from 'classnames';
 export class ProgressBar extends React.Component {
 
   static propTypes = {
-    type: React.PropTypes.string,
+    type: React.PropTypes.oneOf(['success', 'primary', 'warning', 'danger']),
     striped: React.PropTypes.bool,
     animated: React.PropTypes.bool,
     label: React.PropTypes.string,
@@ -33,7 +33,7 @@ export class ProgressBar extends React.Component {
     return (
       <div className='progress'>
         <div className={classes} style={{width: this.props.percentage + '%', height: '100%'}}>
-          {this.props.label}
+          <span>{this.props.label}</span>
         </div>
       </div>
 	  );
