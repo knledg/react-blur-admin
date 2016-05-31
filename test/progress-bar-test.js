@@ -7,7 +7,7 @@ import {expect} from 'chai';
 import { ProgressBar } from '../src';
 
 describe('<ProgressBar/>', function() {
-  it('Should have a default class of primary ithout type property', function() {
+  it('Should have a default class of primary without type property', function() {
     const component = shallow(<ProgressBar percentage={0}/>);
     expect(component.find('div.progress > div').hasClass('progress-bar-primary')).to.equal(true);
   });
@@ -32,7 +32,7 @@ describe('<ProgressBar/>', function() {
     expect(component.find('div.progress > div').hasClass('animated')).to.equal(false);
   });
 
-  it('Should have a default label of empty string', function() {
+  it('Should not display a label', function() {
     const component = shallow(<ProgressBar label='' percentage={0}/>);
     expect(component.find('span').text('label')).to.have.length(0);
   });
