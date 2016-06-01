@@ -114,7 +114,7 @@ describe('<Modal/>', function() {
 
   it('Modal has a className', function() {
     const component = shallow(<Modal onClose={noop}  className='Testing classname'/>);
-    expect(component.find('div.modal').hasClass('Testing classname')).to.equal(true);
+    expect(component.find('div.modal').hasClass('Testing className')).to.equal(true);
   });
 
   it('Modal should align right', function() {
