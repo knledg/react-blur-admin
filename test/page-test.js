@@ -32,7 +32,8 @@ describe('<Page/>', function() {
   });
 
   it('Renders children', function() {
-    const component = shallow(<Page/>);
-    expect(component.children()).to.have.length(1);
+    const button = <Button/>;
+    const component = shallow(<Page> {button} </Page>);
+    expect(component.containsMatchingElement(button)).to.equal(true);
   });
 });
