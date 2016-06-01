@@ -20,8 +20,9 @@ export class Modal extends React.Component {
     size: 'md',
     align: 'left',
     title: '',
-    type: 'Success',
+    type: 'success',
     isOpen: false,
+    icon: '',
   }
 
   getHeaderClass() {
@@ -123,7 +124,7 @@ export class Modal extends React.Component {
         <div className={`fade ${this.props.isOpen ? 'modal-backdrop in' : ''}`}>
         </div>
 
-        <div className={`modal fade ${this.props.isOpen ? 'modal-open in' : ''} ${this.props.className}`}>
+        <div className={`modal fade ${this.props.isOpen ? 'modal-open in' : ''} ${this.props.className} ${this.renderModalSize()}`}>
           <div className='modal-dialog'>
             <div className='modal-content'>
               {this.renderHeader()}
