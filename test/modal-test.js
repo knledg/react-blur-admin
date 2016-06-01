@@ -48,52 +48,52 @@ describe('<Modal/>', function() {
   });
 
   it('Modal size should be extra small', function() {
-    const component = shallow(<Modal onClose={noop}  size='xs'/>);
+    const component = shallow(<Modal onClose={noop} size='xs'/>);
     expect(component.find('div.modal').hasClass('xsmall-panel')).to.equal(true);
   });
 
   it('Modal size should be extra small', function() {
-    const component = shallow(<Modal onClose={noop}  size='extra-small'/>);
+    const component = shallow(<Modal onClose={noop} size='extra-small'/>);
     expect(component.find('div.modal').hasClass('xsmall-panel')).to.equal(true);
   });
 
   it('Modal size should be small', function() {
-    const component = shallow(<Modal onClose={noop}  size='sm'/>);
+    const component = shallow(<Modal onClose={noop} size='sm'/>);
     expect(component.find('div.modal').hasClass('small-panel')).to.equal(true);
   });
 
   it('Modal size should be small', function() {
-    const component = shallow(<Modal onClose={noop}  size='small'/>);
+    const component = shallow(<Modal onClose={noop} size='small'/>);
     expect(component.find('div.modal').hasClass('small-panel')).to.equal(true);
   });
 
   it('Modal size should be medium', function() {
-    const component = shallow(<Modal onClose={noop}  size='md'/>);
+    const component = shallow(<Modal onClose={noop} size='md'/>);
     expect(component.find('div.modal').hasClass('medium-panel')).to.equal(true);
   });
 
   it('Modal size should be medium', function() {
-    const component = shallow(<Modal onClose={noop}  size='medium'/>);
+    const component = shallow(<Modal onClose={noop} size='medium'/>);
     expect(component.find('div.modal').hasClass('medium-panel')).to.equal(true);
   });
 
-  it('Modal size should be small', function() {
-    const component = shallow(<Modal onClose={noop}  size='lg'/>);
+  it('Modal size should be large', function() {
+    const component = shallow(<Modal onClose={noop} size='lg'/>);
     expect(component.find('div.modal').hasClass('large-panel')).to.equal(true);
   });
 
-  it('Modal size should be small', function() {
-    const component = shallow(<Modal onClose={noop}  size='large'/>);
+  it('Modal size should be large', function() {
+    const component = shallow(<Modal onClose={noop} size='large'/>);
     expect(component.find('div.modal').hasClass('large-panel')).to.equal(true);
   });
 
   it('Modal size should have a default of empty string', function() {
-    const component = shallow(<Modal onClose={noop}  size='auto'/>);
+    const component = shallow(<Modal onClose={noop} size='auto'/>);
     expect(component.find('div.modal').hasClass('')).to.equal(true);
   });
 
   it('Modal size should have a default of empty string', function() {
-    const component = shallow(<Modal onClose={noop}  size='none'/>);
+    const component = shallow(<Modal onClose={noop} size='none'/>);
     expect(component.find('div.modal').hasClass('')).to.equal(true);
   });
 
