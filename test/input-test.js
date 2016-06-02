@@ -1,17 +1,36 @@
 import React from 'react';
 import {shallow} from 'enzyme';
 import {expect} from 'chai';
+import {noop} from 'lodash';
 
 import { Input } from '../src';
 
 describe('<Input/>', function() {
   it('Has default props');
+  it('Type is success', function() {
+    const component = shallow(<Input onChange={noop} validationResult={true} type='success'/>);
+    expect(component.find('input').hasClass('success')).to.equal(true);
+  });
 
-  it('Input types');
+  // it('Type is error', function() {
+  //   const component = shallow(<Input onChange={noop} type='error'/>);
+  //   expect(component.find('div.form-group').hasClass('error')).to.equal(true);
+  // });
 
-  it('Input ID');
+  // it('Type is warning', function() {
+  //   const component = shallow(<Input onChange={noop} type='warning'/>);
+  //   expect(component.find('div.form-group').hasClass('warning')).to.equal(true);
+  // });
 
-  it('Input name');
+  // it('Input has ID');
+  // const component = shallow(<Input onChange={noop} type='warning'/>);
+  //   expect(component.find('input.radio').text()).to.contain('warning');
+  // });
+
+  // it('Input has name', function() {
+  //   const component = shallow(<Input onChange={noop} name='Testing name'/>);
+  //   expect(component.find('label').text()).to.contain('Testing name');
+  // });
 
   it('Input className');
 
@@ -51,4 +70,3 @@ describe('<Input/>', function() {
 
   it('Input is not rounded');
 });
-
