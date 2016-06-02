@@ -6,28 +6,48 @@ export class Select extends React.Component {
   static propTypes = {
     placeholder: React.PropTypes.string,
     onChange: React.PropTypes.func,
-    options: React.PropTypes.array,
+    options: React.PropTypes.arrayOf(
+      React.PropTypes.shape({
+        value: React.PropTypes.string,
+        label: React.PropTypes.string,
+      }),
+    ),
     value: React.PropTypes.node,
     isSearchable: React.PropTypes.bool,
+    isOpen: React.PropTypes.bool,
+    onToggleOpen: React.PropTypes.func, // used when the parent needs to know that isOpen was toggled
   }
 
   static defaultProps = {
     placeholder: '',
-    open: false,
-    onChange: () => {},
+    onChange: _.noop,
     value: '',
     isSearchable: false,
+    isOpen: false,
+    onToggleOpen: _.noop,
   }
 
   constructor(props) {
     super(props);
+
+    const option = _.find(this.props.options, {value: this.props.value});
     this.state = {
-      value: this.props.placeholder,
+      value: option && option.label || this.props.placeholder,
       activeIndex: 0,
-      isOpen: false,
+      isOpen: this.props.isOpen,
       searchValue: '',
       visibleOptions: this.props.options,
     };
+  }
+
+  componentDidMount() {
+    this.onFocus();
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.isOpen !== this.props.isOpen) {
+      this.setState({isOpen: nextProps.isOpen}, this.onFocus);
+    }
   }
 
   onFocus() {
@@ -37,6 +57,7 @@ export class Select extends React.Component {
   }
 
   onToggleOpen() {
+    this.props.onToggleOpen(! this.state.isOpen);
     this.setState({ isOpen: ! this.state.isOpen }, this.onFocus);
   }
 

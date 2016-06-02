@@ -1,3 +1,24 @@
+## [v0.4.0]
+> May 31, 2016
+
+**BREAKING CHANGES**
+- Renamed `EditableField` class to `EditableText`
+
+### EditableText
+- Only show error help label if there is an error
+- If validationResult is unknown, return empty string instead of throwing an error
+
+### Select
+- Update this.props.options proptypes to be more specific
+- Show the label for the selected option instead of always showing the placeholder
+
+### EditableSelect Component added
+- Just as with EditableText, developers can now utilize an EditableSelect, that shows a static text value and when clicked it will transform into a Select dropdown.
+- Default behavior: onClick it will load the open Select dropdown and focus on the input search if it exists. Escape will close the dropdown and revert back to the clickable text div
+
+### CSS
+- Added `.disabled` class so any DOM element can benefit from the `not-allowed` cursor
+
 ## [v0.3.0]
 > May 29, 2016
 

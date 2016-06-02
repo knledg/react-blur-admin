@@ -34,6 +34,20 @@ Individual pages/demos/layouts can be found in the [React Webpack Skeleton repo]
 
 Before the v1.0.0 release, a minor update will represent breaking changes and a patch will represent feature enhancements or bug fixes.
 
+## Contributing
+
+This is an active project and we'd love your help! Please submit small pull requests. You can make sure tests and lint passes by running `npm run lint && npm run test` before committing.
+
+You can also add the `.git/hooks/pre-push` with the following:
+
+```
+#!/usr/bin/env bash
+
+npm run lint && npm run test
+```
+
+And making it executable with `chmod ugo+x .git/hooks/pre-push`
+
 ## Example Usage
 
 A React Webpack Skeleton implementing the layout for React Blur Admin and using it's components will be uploaded and linked shortly. You can see how each component is implemented by looking at the source code for each of the demo pages.

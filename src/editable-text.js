@@ -1,6 +1,6 @@
 import React from 'react';
 
-export class EditableField extends React.Component {
+export class EditableText extends React.Component {
 
   static propTypes = {
     onChange: React.PropTypes.func.isRequired,
@@ -8,12 +8,16 @@ export class EditableField extends React.Component {
     value: React.PropTypes.node.isRequired,
     hasError: React.PropTypes.bool,
     errorHelpLabel: React.PropTypes.string,
+    placeholder: React.PropTypes.string,
+    disabled: React.PropTypes.bool,
   }
 
   static defaultProps = {
     value: '',
     hasError: false,
     errorHelpLabel: '',
+    placeholder: 'No Value',
+    disabled: false,
   }
 
   constructor(props) {
@@ -31,7 +35,11 @@ export class EditableField extends React.Component {
   }
 
   onSetEditing(isBeingEdited) {
-    this.setState({isBeingEdited}, () => {
+    if (this.props.disabled) {
+      return false;
+    }
+
+    return this.setState({isBeingEdited}, () => {
       if (this.state.isBeingEdited) {
         this.refs['edit-input'].focus();
       }
@@ -79,15 +87,15 @@ export class EditableField extends React.Component {
       return 'warning';
     }
 
-    throw new Error(`Unknown validation result on EditableField: ${validationResult}`);
+    return '';
   }
 
   getStatus(status) {
     return status ? `has-${status}` : '';
   }
 
-  renderErrorHelpLabel() {
-    if (! this.props.errorHelpLabel) {
+  renderErrorHelpLabel(status) {
+    if (! this.props.errorHelpLabel || status !== 'error') {
       return null;
     }
 
@@ -101,8 +109,8 @@ export class EditableField extends React.Component {
 
     if (! this.state.isBeingEdited) {
       return (
-        <span className='editable editable-click' onClick={e => this.onSetEditing(true)}>
-          {this.props.value}
+        <span className={`editable editable-click ${this.props.disabled ? 'disabled' : ''}`} onClick={e => this.onSetEditing(true)}>
+          {this.props.value || this.props.placeholder}
         </span>
       );
     }
@@ -125,7 +133,7 @@ export class EditableField extends React.Component {
               <i className='ion-close-round'></i>
             </button>
           </span>
-          {this.renderErrorHelpLabel()}
+          {this.renderErrorHelpLabel(status)}
         </div>
       </form>
     );

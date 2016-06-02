@@ -173,6 +173,15 @@ textarea.form-control {
   }
 }
 
+.disabled {
+  color: $disabled;
+  cursor: not-allowed;
+  &:before {
+    border-color: $disabled !important;
+    cursor: not-allowed;
+  }
+}
+
 .input-group {
   width: 100%;
   margin-bottom: 15px;
