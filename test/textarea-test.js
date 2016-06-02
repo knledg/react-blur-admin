@@ -48,7 +48,9 @@ it('Value renders text', function() {
   expect(component.find('textarea').prop('value')).to.equal('Testing text');
 });
 
-// it('Has an onClick change', function() {
-//   const component = shallow(<Textarea onChange={onClick}/>);
-//   expect(component.find('textarea').hasClass('onClick')).to.equal(true);
-// });
+it('onChange is called when value is changed', function() {
+  const onChange = sinon.spy();
+  const component = shallow(<Textarea onChange={onChange} />);
+  component.find('textarea').simulate('change');
+  expect(onChange.calledOnce).to.equal(true);
+});
