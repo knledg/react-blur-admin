@@ -15,6 +15,7 @@ export class EditableSelect extends React.Component {
       }),
     ),
     isSearchable: React.PropTypes.bool,
+    disabled: React.PropTypes.bool,
   }
 
   static defaultProps = {
@@ -36,6 +37,10 @@ export class EditableSelect extends React.Component {
   }
 
   onSetEditing(isBeingEdited) {
+    if (this.props.disabled) {
+      return false;
+    }
+
     this.setState({isBeingEdited});
   }
 
@@ -48,7 +53,7 @@ export class EditableSelect extends React.Component {
     if (! this.state.isBeingEdited) {
       const option = _.find(this.props.options, {value: this.props.value});
       return (
-        <span className='editable editable-click' onClick={e => this.onSetEditing(true)}>
+        <span className={`editable editable-click ${this.props.disabled ? 'disabled' : ''}`} onClick={e => this.onSetEditing(true)}>
           {option && option.label || this.props.placeholder}
         </span>
       );
@@ -58,14 +63,11 @@ export class EditableSelect extends React.Component {
       <form className='form-inline editable-wrap editable-text' role='form' onSubmit={e => e.preventDefault()}>
         <div className='editable-controls form-group'>
           <Select
+            isOpen={true}
             {...this.props}
             onChange={value => this.onChange(value)}
+            onToggleOpen={isOpen => this.onSetEditing(isOpen)}
             className='editable-has-buttons editable-input' />
-          <span className='editable-buttons button-wrapper'>
-            <button type='button' onClick={e => this.onSetEditing(false)} className='btn btn-default btn-with-icon'>
-              <i className='ion-close-round' />
-            </button>
-          </span>
         </div>
       </form>
     );

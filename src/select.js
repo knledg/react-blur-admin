@@ -14,6 +14,8 @@ export class Select extends React.Component {
     ),
     value: React.PropTypes.node,
     isSearchable: React.PropTypes.bool,
+    isOpen: React.PropTypes.bool,
+    onToggleOpen: React.PropTypes.func, // used when the parent needs to know that isOpen was toggled
   }
 
   static defaultProps = {
@@ -21,6 +23,8 @@ export class Select extends React.Component {
     onChange: _.noop,
     value: '',
     isSearchable: false,
+    isOpen: false,
+    onToggleOpen: _.noop,
   }
 
   constructor(props) {
@@ -30,10 +34,20 @@ export class Select extends React.Component {
     this.state = {
       value: option && option.label || this.props.placeholder,
       activeIndex: 0,
-      isOpen: false,
+      isOpen: this.props.isOpen,
       searchValue: '',
       visibleOptions: this.props.options,
     };
+  }
+
+  componentDidMount() {
+    this.onFocus();
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.isOpen !== this.props.isOpen) {
+      this.setState({isOpen: nextProps.isOpen}, this.onFocus);
+    }
   }
 
   onFocus() {
@@ -43,6 +57,7 @@ export class Select extends React.Component {
   }
 
   onToggleOpen() {
+    this.props.onToggleOpen(! this.state.isOpen);
     this.setState({ isOpen: ! this.state.isOpen }, this.onFocus);
   }
 

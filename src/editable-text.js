@@ -9,6 +9,7 @@ export class EditableText extends React.Component {
     hasError: React.PropTypes.bool,
     errorHelpLabel: React.PropTypes.string,
     placeholder: React.PropTypes.string,
+    disabled: React.PropTypes.bool,
   }
 
   static defaultProps = {
@@ -16,6 +17,7 @@ export class EditableText extends React.Component {
     hasError: false,
     errorHelpLabel: '',
     placeholder: 'No Value',
+    disabled: false,
   }
 
   constructor(props) {
@@ -33,6 +35,10 @@ export class EditableText extends React.Component {
   }
 
   onSetEditing(isBeingEdited) {
+    if (this.props.disabled) {
+      return false;
+    }
+
     this.setState({isBeingEdited}, () => {
       if (this.state.isBeingEdited) {
         this.refs['edit-input'].focus();
@@ -81,15 +87,15 @@ export class EditableText extends React.Component {
       return 'warning';
     }
 
-    throw new Error(`Unknown validation result on EditableField: ${validationResult}`);
+    return '';
   }
 
   getStatus(status) {
     return status ? `has-${status}` : '';
   }
 
-  renderErrorHelpLabel() {
-    if (! this.props.errorHelpLabel) {
+  renderErrorHelpLabel(status) {
+    if (! this.props.errorHelpLabel || status !== 'error') {
       return null;
     }
 
@@ -103,7 +109,7 @@ export class EditableText extends React.Component {
 
     if (! this.state.isBeingEdited) {
       return (
-        <span className='editable editable-click' onClick={e => this.onSetEditing(true)}>
+        <span className={`editable editable-click ${this.props.disabled ? 'disabled' : ''}`} onClick={e => this.onSetEditing(true)}>
           {this.props.value || this.props.placeholder}
         </span>
       );
@@ -127,7 +133,7 @@ export class EditableText extends React.Component {
               <i className='ion-close-round'></i>
             </button>
           </span>
-          {this.renderErrorHelpLabel()}
+          {this.renderErrorHelpLabel(status)}
         </div>
       </form>
     );
