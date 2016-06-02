@@ -1,3 +1,21 @@
+## [v0.5.0]
+> June 2nd, 2016
+
+### CSS
+- Remove fixed width on buttons, I think that should be handled by each developer
+- Allow labels to be seen on modals (text and background color were the same)
+- First td in each row of a table would be centered, changed that in to default alignment of left so the developer can choose how they want alignment
+
+### Button
+- Remove div.button-wrapper around buttons, let the padding/spacing be handled by the individual developer
+
+### Modal (enhancement)
+- onClose is no longer a required func. isOpen can change from the parent so technically the logic can be handled externally if needed.
+
+### Select (enhancement)
+- this.props.value can be a string or a number (previously just a string)
+
+
 ## [v0.4.0]
 > May 31, 2016
 

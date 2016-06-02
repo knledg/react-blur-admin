@@ -11,7 +11,7 @@ export class Modal extends React.Component {
     icon: React.PropTypes.string,
     align: React.PropTypes.string,
     type: React.PropTypes.string,
-    onClose: React.PropTypes.func.isRequired,
+    onClose: React.PropTypes.func,
     isOpen: React.PropTypes.bool,
   }
 
@@ -111,6 +111,9 @@ export class Modal extends React.Component {
   }
 
   renderFooter() {
+    if (! this.props.onClose) {
+      return null;
+    }
     return (
       <div className='modal-footer'>
         <Button type={this.props.type} isIconHidden={true} size='sm' title='OK' onClick={this.props.onClose} />

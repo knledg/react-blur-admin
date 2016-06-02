@@ -10,6 +10,14 @@
   }
 }
 
+.body.badmin-transparent {
+  .modal-content {
+    label.control-label {
+      color: $default-text;
+    }
+  }
+}
+
 .modal-buttons {
   margin-top: -12px;
   margin-right: -22px;

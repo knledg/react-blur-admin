@@ -8,7 +8,10 @@ export class Select extends React.Component {
     onChange: React.PropTypes.func,
     options: React.PropTypes.arrayOf(
       React.PropTypes.shape({
-        value: React.PropTypes.string,
+        value: React.PropTypes.oneOfType([
+          React.PropTypes.string,
+          React.PropTypes.number,
+        ]),
         label: React.PropTypes.string,
       }),
     ),
