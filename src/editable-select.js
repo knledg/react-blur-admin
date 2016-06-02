@@ -41,7 +41,7 @@ export class EditableSelect extends React.Component {
       return false;
     }
 
-    this.setState({isBeingEdited});
+    return this.setState({isBeingEdited});
   }
 
   onChange(value) {

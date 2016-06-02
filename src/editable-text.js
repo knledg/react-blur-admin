@@ -39,7 +39,7 @@ export class EditableText extends React.Component {
       return false;
     }
 
-    this.setState({isBeingEdited}, () => {
+    return this.setState({isBeingEdited}, () => {
       if (this.state.isBeingEdited) {
         this.refs['edit-input'].focus();
       }
