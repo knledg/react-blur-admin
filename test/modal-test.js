@@ -13,9 +13,6 @@ describe('<Modal/>', function() {
     it('Should have a size of medium', function() {
       expect(component.find('div.modal').hasClass('medium-panel')).to.equal(true);
     });
-    it('Should be aligned left', function() {
-      expect(component.find('div.modal-body').hasClass('')).to.equal(true);
-    });
     it('Should have a type of success', function() {
       expect(component.find('div.modal-header').hasClass('bg-success')).to.equal(true);
     });
@@ -87,58 +84,43 @@ describe('<Modal/>', function() {
     expect(component.find('div.modal').hasClass('large-panel')).to.equal(true);
   });
 
-  it('Modal size should have a default of empty string', function() {
-    const component = shallow(<Modal onClose={noop} size='auto'/>);
-    expect(component.find('div.modal').hasClass('')).to.equal(true);
-  });
-
-  it('Modal size should have a default of empty string', function() {
-    const component = shallow(<Modal onClose={noop} size='none'/>);
-    expect(component.find('div.modal').hasClass('')).to.equal(true);
-  });
-
   it('Modal has an icon', function() {
     const component = shallow(<Modal onClose={noop} icon='fa-fa-plus' />);
     expect(component.find('i').hasClass('fa-fa-plus')).to.equal(true);
   });
 
   it('Modal should have title', function() {
-    const component = shallow(<Modal onClose={noop}  title='Testing title'/>);
+    const component = shallow(<Modal onClose={noop} title='Testing title'/>);
     expect(component.find('div.modal-header').text()).to.contain('Testing title');
   });
 
   it('Modal does not have a title', function() {
-    const component = shallow(<Modal onClose={noop}  size='none'/>);
-    expect(component.find('div.modal-header').hasClass('Testing title')).to.equal(false);
+    const component = shallow(<Modal onClose={noop} size='none'/>);
+    expect(component.find('div.modal-header').text()).to.equal(' ');
   });
 
   it('Modal has a className', function() {
-    const component = shallow(<Modal onClose={noop}  className='Testing classname'/>);
+    const component = shallow(<Modal onClose={noop} className='Testing className'/>);
     expect(component.find('div.modal').hasClass('Testing className')).to.equal(true);
   });
 
   it('Modal should align right', function() {
-    const component = shallow(<Modal onClose={noop}  align='right'/>);
+    const component = shallow(<Modal onClose={noop} align='right'/>);
     expect(component.find('div.modal-body').hasClass('text-right')).to.equal(true);
   });
 
   it('Modal should align center', function() {
-    const component = shallow(<Modal onClose={noop}  align='center'/>);
+    const component = shallow(<Modal onClose={noop} align='center'/>);
     expect(component.find('div.modal-body').hasClass('text-center')).to.equal(true);
   });
 
-  it('Modal should align left', function() {
-    const component = shallow(<Modal onClose={noop}  align='left'/>);
-    expect(component.find('div.modal-body').hasClass('')).to.equal(true);
-  });
-
   it('Modal isOpen is true', function() {
-    const component = shallow(<Modal onClose={noop}  isOpen={true}/>);
+    const component = shallow(<Modal onClose={noop} isOpen={true}/>);
     expect(component.find('div.modal').hasClass('modal-open in')).to.equal(true);
   });
 
   it('Modal isOpen is false', function() {
-    const component = shallow(<Modal onClose={noop}  isOpen={false}/>);
+    const component = shallow(<Modal onClose={noop} isOpen={false}/>);
     expect(component.find('div.modal').hasClass('modal-open in')).to.equal(false);
   });
 
