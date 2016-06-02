@@ -22,7 +22,7 @@ describe('<Page/>', function() {
 
   it('Action bar renders text', function() {
     const component = shallow(<Page actionBar='Testing text'/>);
-    expect(component.containsMatchingElement('Testing text')).to.equal(true);
+    expect(component.find('Col[align="right"]').children().text()).to.contain('Testing text');
   });
 
   it('Action bar renders elements', function() {
