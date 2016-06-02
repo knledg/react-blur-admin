@@ -17,7 +17,6 @@ export class Notification extends React.Component {
     type: 'info',
     timeout: 5000,
     extendedTimeout: 2000,
-    allowHtml: true,
     closeButton: true,
     tapToDismiss: true,
   }
