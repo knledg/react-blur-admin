@@ -14,21 +14,16 @@ export class Breadcrumbs extends React.Component {
     }
     return _.map(breadcrumbs, (breadcrumb, key) => {
       return (
-        <li key={key}> {breadcrumb} </li>
+        <li key={key}>{breadcrumb}</li>
       );
     });
   }
 
   render() {
     return (
-      <div className={`'content-top clearfix' ${this.props.className}`}>
-        <ul className='breadcrumb al-breadcrumb'>
-          <li>
-            <a href='#/dashboard'>Home</a>
-          </li>
-            {this.renderBreadcrumbs()}
-        </ul>
-      </div>
+      <ul className='breadcrumb al-breadcrumb'>
+        {this.renderBreadcrumbs()}
+      </ul>
     );
   }
 }
