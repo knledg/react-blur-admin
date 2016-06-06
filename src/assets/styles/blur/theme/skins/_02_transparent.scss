@@ -31,7 +31,9 @@ body.badmin-transparent {
       transform: translate3d(0,0,0);
     }
     .panel-body {
-      transform: translate3d(0,0,0);
+      /* Commenting out translate3d due to drop downs appearing beneath panels
+      and not above. Not sure if transform is used on any panels. Adjust if so.
+      transform: translate3d(0,0,0); */
     }
   }
   .button-wrapper .btn-default {
