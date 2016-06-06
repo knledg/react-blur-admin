@@ -13,7 +13,6 @@ export class Input extends React.Component {
     label: React.PropTypes.string,
     addonLeft: React.PropTypes.node,
     addonRight: React.PropTypes.node,
-    hasFeedback: React.PropTypes.bool,
     autoFocus: React.PropTypes.bool,
     hasFeedbackIcon: React.PropTypes.bool,
     onValidate: React.PropTypes.func,
