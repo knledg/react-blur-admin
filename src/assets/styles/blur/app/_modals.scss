@@ -74,8 +74,9 @@ $modal-input-border: #e7e7e7;
   }
 }
 
-.modal-open {
+.modal.modal-open {
   display: block; /* added 5/8/2016 JW */
+  overflow: auto; /* added 6/6/16 JW */
 }
 
 @media screen and (min-width: $resM) {
