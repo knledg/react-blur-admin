@@ -51,6 +51,10 @@ export class Select extends React.Component {
     if (nextProps.isOpen !== this.props.isOpen) {
       this.setState({isOpen: nextProps.isOpen}, this.onFocus);
     }
+
+    if (nextProps.options !== this.props.options) {
+      this.setState({visibleOptions: nextProps.options, searchValue: ''});
+    }
   }
 
   onFocus() {
@@ -150,6 +154,7 @@ export class Select extends React.Component {
           ref='select-search'
           type='text'
           className='form-control'
+          value={this.state.searchValue}
           onKeyDown={e => this.onHandleKeyDown(e)}
           onChange={e => this.onTextSearch(e)} />
       </div>
