@@ -7,6 +7,10 @@ export class Breadcrumbs extends React.Component {
     className: React.PropTypes.string,
   }
 
+  static defaultProps = {
+    className: '',
+  }
+
   renderBreadcrumbs() {
     let breadcrumbs = this.props.children;
     if (!_.isArray(breadcrumbs)) {
@@ -21,7 +25,7 @@ export class Breadcrumbs extends React.Component {
 
   render() {
     return (
-      <ul className='breadcrumb al-breadcrumb'>
+      <ul className={`breadcrumb al-breadcrumb ${this.props.className}`}>
         {this.renderBreadcrumbs()}
       </ul>
     );
