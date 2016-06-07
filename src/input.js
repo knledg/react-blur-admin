@@ -18,7 +18,8 @@ export class Input extends React.Component {
     onValidate: React.PropTypes.func,
     onKeyDown: React.PropTypes.func,
     value: React.PropTypes.oneOfType([
-      React.PropTypes.node,
+      React.PropTypes.number,
+      React.PropTypes.string,
       React.PropTypes.bool,
     ]).isRequired,
     onChange: React.PropTypes.func.isRequired,
@@ -31,7 +32,6 @@ export class Input extends React.Component {
     value: '',
     type: 'text',
     hasFeedbackIcon: true,
-    hasFeedback: true,
     disabled: false,
     onKeyDown: _.noop,
     autoFocus: false,

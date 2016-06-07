@@ -6,14 +6,16 @@ import {noop} from 'lodash';
 import { Input } from '../src';
 
 describe('<Input/>', function() {
-  it('Has default props');
-  it('Is a text type', function() {
-    const component = shallow(<Input onChange={noop} onValidate={() => true} type='text'/>);
+  it('Has default props', function() {
+    const component = shallow(<Input onChange={noop}/>);
     expect(component.find('input').hasClass('form-control')).to.equal(true);
+    expect(component.find('div.form-group').hasClass('has-feedback')).to.equal(true);
+    expect(component.find('input').hasClass('autoFocus')).to.equal(false);
+    expect(component.find('input').prop('disabled')).to.equal(false);
   });
 
-  it('Is has feedback', function() {
-    const component = shallow(<Input onChange={noop} onValidate={() => true} hasFeedback={true} type='text'/>);
+  it('Is a text type', function() {
+    const component = shallow(<Input onChange={noop} onValidate={() => true} type='text'/>);
     expect(component.find('input').hasClass('form-control')).to.equal(true);
   });
 
@@ -22,33 +24,33 @@ describe('<Input/>', function() {
     expect(component.find('input').prop('autoFocus')).to.equal(true);
   });
 
-   it('Is disabled', function() {
+  it('Is disabled', function() {
     const component = shallow(<Input onChange={noop} disabled={true} type='text'/>);
     expect(component.find('input').prop('disabled')).to.equal(true);
   });
 
-   it('Renders name', function() {
+  it('Renders name', function() {
     const component = shallow(<Input onChange={noop} name='testing name' type='radio'/>);
     expect(component.find('label > input').prop('name')).to.contain('testing name');
   });
 
-   it('Has label', function() {
+  it('Has label', function() {
     const component = shallow(<Input onChange={noop} onValidate={() => true} label='testing label' type='text'/>);
     expect(component.find('label.control-label').hasClass('control-label')).to.equal(true);
     expect(component.find('label.control-label').text()).to.equal('testing label');
   });
 
-   it('ClassName is rendered', function() {
+  it('ClassName is rendered', function() {
     const component = shallow(<Input onChange={noop} className='testing ClassName' type='text'/>);
     expect(component.find('div.form-group').hasClass('testing ClassName')).to.equal(true);
   });
 
-   it('is not rounded', function() {
+  it('is not rounded', function() {
     const component = shallow(<Input onChange={noop} isRounded={false} type='text'/>);
     expect(component.find('input.form-control-rounded').length).to.equal(0);
   });
 
-   it('is rounded', function() {
+  it('is rounded', function() {
     const component = shallow(<Input onChange={noop} isRounded={true} type='text'/>);
     expect(component.find('input.form-control').hasClass('form-control-rounded')).to.equal(true);
   });
@@ -60,7 +62,7 @@ describe('<Input/>', function() {
     expect(component.find('div.help-block').length).to.equal(1);
   });
 
-   it('Has placeholder', function() {
+  it('Has placeholder', function() {
     const component = shallow(<Input onChange={noop} placeholder='testing placeholder' type='text'/>);
     expect(component.find('input').prop('placeholder')).to.contain('testing placeholder');
   });
@@ -70,7 +72,54 @@ describe('<Input/>', function() {
     expect(component.find('div.form-group').hasClass('has-feedback')).to.equal(true);
   });
 
- it('Is addonLeft rendering text', function() {
+  it('It has a type of checkbox', function() {
+    const component = shallow(<Input onChange={noop} onValidate={() => true} hasFeedbackIcon={true} type='checkbox'/>);
+    expect(component.find('div.checkbox').hasClass('checkbox')).to.equal(true);
+  });
+
+  it('Checkbox renders green/success check', function() {
+    const component = shallow(<Input onChange={noop} onValidate={() => true} hasFeedbackIcon={true} type='checkbox'/>);
+    expect(component.find('div.form-group').hasClass('has-success')).to.equal(true);
+  });
+
+  it('Checkbox renders yellow/warning check', function() {
+    const component = shallow(<Input onChange={noop} onValidate={() => 'warning'} hasFeedbackIcon={true} type='checkbox'/>);
+    expect(component.find('div.form-group').hasClass('has-warning')).to.equal(true);
+  });
+
+  it('Checkbox renders red/error check', function() {
+    const component = shallow(<Input onChange={noop} onValidate={() => false} hasFeedbackIcon={true} type='checkbox'/>);
+    expect(component.find('div.form-group').hasClass('has-error')).to.equal(true);
+  });
+
+  it('Checkbox renders grey/no validation check', function() {
+    const component = shallow(<Input onChange={noop} hasFeedbackIcon={true} type='checkbox'/>);
+    expect(component.find('div.checkbox').hasClass('checkbox')).to.equal(true);
+  });
+
+  it('Checkbox is disabled', function() {
+    const component = shallow(<Input onChange={noop} disabled={true} hasFeedbackIcon={true} type='checkbox'/>);
+    expect(component.find('input').prop('type')).to.contain('checkbox');
+    expect(component.find('input').prop('disabled')).to.equal(true);
+  });
+
+  it('It has a type of checkbox', function() {
+    const component = shallow(<Input onChange={noop} onValidate={() => true} hasFeedbackIcon={true} type='checkbox'/>);
+    expect(component.find('div.checkbox').hasClass('checkbox')).to.equal(true);
+  });
+
+  it('It has a type of radio', function() {
+    const component = shallow(<Input onChange={noop} onValidate={() => true} hasFeedbackIcon={true} type='radio'/>);
+    expect(component.find('input').prop('type')).to.equal('radio');
+  });
+
+  it('It has a type of radio disabled', function() {
+    const component = shallow(<Input onChange={noop} disabled={true} hasFeedbackIcon={true} type='radio'/>);
+    expect(component.find('input').prop('type')).to.contain('radio');
+    expect(component.find('input').prop('disabled')).to.equal(true);
+  });
+
+  it('Is addonLeft rendering text', function() {
     const component = shallow(<Input onChange={noop} addonLeft='testing left' onValidate={() => true} type='text'/>);
     expect(component.find('span').hasClass('input-group-addon input-group-addon-primary addon-left')).to.equal(true);
     expect(component.find('span.addon-left').text()).to.equal('testing left');
@@ -82,121 +131,90 @@ describe('<Input/>', function() {
     expect(component.find('span.addon-right').text()).to.equal('testing right');
   });
 
- it('Is addonLeft rendering icons', function() {
+  it('Is addonLeft rendering icons', function() {
     const icon = <i className='fa fa-check' />;
     const component = shallow(<Input onChange={noop} addonLeft={<i className='fa fa-check' />} validationResult={true} type='text'/>);
     expect(component.find('span').containsMatchingElement(icon)).to.equal(true);
   });
 
- it('Is addonRight rendering icons', function() {
+  it('Is addonRight rendering icons', function() {
     const icon = <i className='fa fa-check' />;
     const component = shallow(<Input onChange={noop} addonRight={<i className='fa fa-check' />} validationResult={true} type='text'/>);
     expect(component.find('span').containsMatchingElement(icon)).to.equal(true);
   });
 
-it('Shows success state', function() {
+  it('Shows success state', function() {
     const component = shallow(<Input onChange={noop} onValidate={() => true} />);
     expect(component.find('div.form-group').hasClass('has-success')).to.equal(true);
     expect(component.find('i.ion-checkmark-circled').length).to.equal(1);
   });
 
-it('Shows success state without icon', function() {
+  it('Shows success state without icon', function() {
     const component = shallow(<Input onChange={noop} onValidate={() => true} hasFeedbackIcon={false} />);
     expect(component.find('div.form-group').hasClass('has-success')).to.equal(true);
     expect(component.find('i').length).to.equal(0)
   });
 
-it('Shows fail state', function() {
+  it('Shows fail state', function() {
     const component = shallow(<Input onChange={noop} onValidate={() => false} />);
     expect(component.find('div.form-group').hasClass('has-error')).to.equal(true);
     expect(component.find('i.ion-android-cancel').length).to.equal(1);
   });
 
-it('Shows warning state', function() {
+  it('Shows warning state', function() {
     const component = shallow(<Input onChange={noop} onValidate={() => 'warning'} />);
     expect(component.find('div.form-group').hasClass('has-warning')).to.equal(true);
     expect(component.find('i.ion-alert-circled').length).to.equal(1);
   });
 
-it('Shows addon Right', function() {
+  it('Shows addon Right', function() {
     const component = shallow(<Input onChange={noop} addonRight='testing right' onValidate={() => true} />);
     expect(component.find('span').hasClass('input-group-addon input-group-addon-primary addon-right')).to.equal(true);
     expect(component.find('span.addon-right').text()).to.equal('testing right');
   });
 
-it('Shows addon Left', function() {
+  it('Shows addon Left', function() {
     const component = shallow(<Input onChange={noop} addonLeft='testing left' onValidate={() => true} />);
     expect(component.find('span').hasClass('input-group-addon input-group-addon-primary addon-left')).to.equal(true);
     expect(component.find('span.addon-left').text()).to.equal('testing left');
   });
 
-// it('Renders input wrapper', function() {
-//     const component = shallow(<Input onChange={noop} addonLeft='testing left' onValidate={() => true} />);
-//     expect(component.find('div.input-group').hasClass('testing left')).to.equal(true);
-//   });
+  it('Has an id/key');
+// Key is not a standard prop, cannot access for testing (https://fb.me/react-special-props)
 
+  it('onValidate is called', function() {
+    const onClick = sinon.spy();
+    const component = shallow(<Input onChange={noop} onValidate={onClick} />);
+    component.find('input').simulate('click');
+    expect(onClick.calledOnce).to.equal(true);
+  });
 
+  it('onKeyDown is called', function() {
+    const onKeyDown = sinon.spy();
+    const component = shallow(<Input onChange={noop} onKeyDown={onKeyDown} />);
+    component.find('input').simulate('keyDown');
+    expect(onKeyDown.calledOnce).to.equal(true);
+  });
 
-  // it('Classes are rendered', function() {
-  //   const component = shallow(<Input onChange={noop} className='test' validationResult={true} type='text'/>);
-  //   expect(component.find('input').hasClass('test')).to.equal(true);
-  // });
+  it('It has a value of number', function() {
+    const component = shallow(<Input onChange={noop} onValidate={() => true} hasFeedback={true} value={2}/>);
+    expect(component.find('input').prop('value')).to.equal(2);
+  });
 
-  // it('Type is error', function() {
-  //   const component = shallow(<Input onChange={noop} type='error'/>);
-  //   expect(component.find('div.form-group').hasClass('error')).to.equal(true);
-  // });
+  it('Has a value of string', function() {
+    const component = shallow(<Input onChange={noop} onValidate={() => true} hasFeedback={true} value='testing value'/>);
+    expect(component.find('input').prop('value')).to.equal('testing value');
+  });
 
-  // it('Type is warning', function() {
-  //   const component = shallow(<Input onChange={noop} type='warning'/>);
-  //   expect(component.find('div.form-group').hasClass('warning')).to.equal(true);
-  // });
+  it('Has a value of true', function() {
+    const component = shallow(<Input onChange={noop} onValidate={() => true} hasFeedback={true} value={true}/>);
+    expect(component.find('input').prop('value')).to.equal(true);
+  });
 
-  // it('Input has ID');
-  // const component = shallow(<Input onChange={noop} type='warning'/>);
-  //   expect(component.find('input.radio').text()).to.contain('warning');
-  // });
-
-  // it('Input has name', function() {
-  //   const component = shallow(<Input onChange={noop} name='Testing name'/>);
-  //   expect(component.find('label').text()).to.contain('Testing name');
-  // });
-
-  it('Input className');
-
-  it('Input placeholder');
-
-  it('Input helpLabel');
-
-  it('Input addonLeft');
-
-  it('Input addonRight');
-
-  it('Input hasFeedback');
-
-  it('Input does not have hasFeedback');
-
-  it('Input has autofocus');
-
-  it('Input does not have autofocus');
-
-  it('Input has FeebackIcon');
-
-  it('Input does not have Feedback icon');
-
-  it('Input onValidate');
-
-  it('Input onKeyDown');
-
-  it('Input value');
-
-  it('Input onChange');
-
-  it('Input disabled');
-
-  it('Input is not disabled');
-
-  it('Input is rounded');
-
-  it('Input is not rounded');
+  it('onChange is called when value is changed', function() {
+    const onChange = sinon.spy();
+    const component = shallow(<Input onChange={onChange} />);
+    component.find('input').simulate('change');
+    expect(onChange.calledOnce).to.equal(true);
+  });
 });
