@@ -1,3 +1,19 @@
+## [v0.6.0]
+> June 7th, 2016
+
+### CSS
+- Remove align center for first th in each table
+- Bugfix: modals wouldn't scroll if their height was greater than that of the screen
+- Bugfix: select dropdown options were behind panels due to a `translate` property in the panel's css
+
+### Switch
+- Feature: Able to disable switches with `this.props.disabled={true|false}`
+
+### Select
+- Bugfix: Search value for searchable selects was never set on the input
+- Feature: If options changes from the parent component, those options will be removed from the select
+
+
 ## [v0.5.0]
 > June 2nd, 2016
 
