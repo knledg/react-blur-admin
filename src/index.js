@@ -1,3 +1,4 @@
+export * from './alert-bar';
 export * from './breadcrumbs';
 export * from './button';
 export * from './editable-text';
