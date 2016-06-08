@@ -131,15 +131,15 @@ describe('<Input/>', function() {
     expect(component.find('span.addon-right').text()).to.equal('testing right');
   });
 
-  it('Is addonLeft rendering icons', function() {
+  it('Is addonLeft rendering an element', function() {
     const icon = <i className='fa fa-check' />;
-    const component = shallow(<Input onChange={noop} addonLeft={<i className='fa fa-check' />} validationResult={true} type='text'/>);
+    const component = shallow(<Input onChange={noop} addonLeft={icon} type='text'/>);
     expect(component.find('span').containsMatchingElement(icon)).to.equal(true);
   });
 
-  it('Is addonRight rendering icons', function() {
+  it('Is addonRight rendering an element', function() {
     const icon = <i className='fa fa-check' />;
-    const component = shallow(<Input onChange={noop} addonRight={<i className='fa fa-check' />} validationResult={true} type='text'/>);
+    const component = shallow(<Input onChange={noop} addonRight={icon} type='text'/>);
     expect(component.find('span').containsMatchingElement(icon)).to.equal(true);
   });
 
@@ -152,7 +152,7 @@ describe('<Input/>', function() {
   it('Shows success state without icon', function() {
     const component = shallow(<Input onChange={noop} onValidate={() => true} hasFeedbackIcon={false} />);
     expect(component.find('div.form-group').hasClass('has-success')).to.equal(true);
-    expect(component.find('i').length).to.equal(0)
+    expect(component.find('i').length).to.equal(0);
   });
 
   it('Shows fail state', function() {
@@ -212,9 +212,9 @@ describe('<Input/>', function() {
   });
 
   it('onChange is called when value is changed', function() {
-    const onChange = sinon.spy();
-    const component = shallow(<Input onChange={onChange} />);
+    const onValidate = sinon.spy();
+    const component = shallow(<Input onChange={onValidate} />);
     component.find('input').simulate('change');
-    expect(onChange.calledOnce).to.equal(true);
+    expect(onValidate.calledOnce).to.equal(true);
   });
 });
