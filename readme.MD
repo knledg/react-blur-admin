@@ -21,12 +21,11 @@ Individual pages/demos/layouts can be found in the [React Webpack Skeleton repo]
 - Textareas
 - Pagination (diverged from Blur's implementation slightly for additional flexibility)
 - Notifications
-
+-  Alerts
 ### Needs Implementation
 
 - Accordions
 - Sliders
-- Alerts
 - Searchable table columns
 - Tags Inputs
 
