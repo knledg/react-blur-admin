@@ -1,3 +1,4 @@
+export * from './breadcrumbs';
 export * from './button';
 export * from './editable-text';
 export * from './editable-select';
