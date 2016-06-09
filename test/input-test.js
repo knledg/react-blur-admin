@@ -211,7 +211,7 @@ describe('<Input/>', function() {
     expect(component.find('input').prop('value')).to.equal(true);
   });
 
-  it('onChange is called when value is changed', function() {
+  it('onValidate is called when value is changed', function() {
     const onValidate = sinon.spy();
     const component = shallow(<Input onChange={onValidate} />);
     component.find('input').simulate('change');
