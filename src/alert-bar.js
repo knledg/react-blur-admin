@@ -1,7 +1,7 @@
 import React from 'react';
 import _ from 'lodash';
 
-export class AlertBar extends React.Component {
+export class Alert extends React.Component {
 
   static propTypes = {
     type: React.PropTypes.string,
@@ -38,11 +38,11 @@ export class AlertBar extends React.Component {
   }
 
   renderCloseButton() {
-    if (! this.props.onClose) {
+    if (! this.props.isDismissible) {
       return null;
     }
     return (
-      <button className="close" type={this.props.type} isDismissible={this.props.onClose}>
+      <button className="toast-close-button" onClick={this.props.onClose}>
       x
       </button>
     );
@@ -50,7 +50,7 @@ export class AlertBar extends React.Component {
 
   render() {
     return (
-      <div className={`alert bg-${this.getAlertClass()}`}>
+      <div className={`alert bg-${this.getAlertClass()} ${this.props.isDismissible ? 'closable' : ''}`}>
         {this.renderCloseButton()}
         {this.props.children}
       </div>
