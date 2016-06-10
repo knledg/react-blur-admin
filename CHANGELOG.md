@@ -1,3 +1,9 @@
+## [v0.6.1]
+> June 8th, 2016
+
+### CSS
+- Change search width to be greater than
+
 ## [v0.6.0]
 > June 7th, 2016
 
