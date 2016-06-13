@@ -5,6 +5,8 @@ export class Switch extends React.Component {
 
   static propTypes = {
     isOn: React.PropTypes.bool,
+    onLabel: React.PropTypes.string,
+    offLabel: React.PropTypes.string,
     onChange: React.PropTypes.func.isRequired,
     type: React.PropTypes.oneOf(['primary', 'info', 'warning', 'success', 'danger']),
     className: React.PropTypes.string,
@@ -13,6 +15,8 @@ export class Switch extends React.Component {
 
   static defaultProps = {
     isOn: true,
+    onLabel: 'ON',
+    offLabel: 'OFF',
     type: 'primary',
     className: '',
     disabled: false,
@@ -30,7 +34,7 @@ export class Switch extends React.Component {
   renderOn() {
     return (
       <div className="bootstrap-switch-container">
-        <span className={`bootstrap-switch-handle-on bootstrap-switch-${this.props.type}`}>ON</span>
+        <span className={`bootstrap-switch-handle-on bootstrap-switch-${this.props.type}`}>{this.props.onLabel}</span>
         <span className="bootstrap-switch-label">&nbsp;</span>
       </div>
     );
@@ -40,7 +44,7 @@ export class Switch extends React.Component {
     return (
       <div className="bootstrap-switch-container">
         <span className="bootstrap-switch-label pull-left">&nbsp;</span>
-        <span className="bootstrap-switch-handle-off bootstrap-switch-default pull-right">OFF</span>
+        <span className="bootstrap-switch-handle-off bootstrap-switch-default pull-right">{this.props.offLabel}</span>
       </div>
     );
   }
