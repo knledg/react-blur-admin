@@ -4,7 +4,7 @@ import React from 'react';
 import {shallow} from 'enzyme';
 import {expect} from 'chai';
 
-import { Button, Switch } from '../src';
+import { Button } from '../src';
 
 describe('<Button />', function() {
   describe('Without type property', function() {
