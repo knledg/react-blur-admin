@@ -1,8 +1,26 @@
+## [v0.7.0]
+> June 14th, 2016
+
+### Editable Select
+- Ability to pass in onRenderValue function to render the static selected value however you want
+- Ability to pass in an onSearch function that gets passed to the underlying Select so you can customize how search works
+
+### Select
+- Ability to pass in onSearch to customize how search of all options is handled to create a subset visibleOptions.
+
+### CSS
+- Removed width restriction on search bar's input at the top of the layout so it can be handled dynamically based on page width for screens like Thunderbolts
+
+### Alert Component
+- Alert Component added
+
+
+
 ## [v0.6.1]
 > June 8th, 2016
 
 ### CSS
-- Change search width to be greater than
+- Change search bar container width to be dynamic
 
 ## [v0.6.0]
 > June 7th, 2016
