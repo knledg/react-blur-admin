@@ -11,9 +11,11 @@ export class EditableSelect extends React.Component {
     options: React.PropTypes.arrayOf(
       React.PropTypes.shape({
         value: React.PropTypes.string,
-        label: React.PropTypes.string,
+        label: React.PropTypes.node,
       }),
     ),
+    onSearch: React.PropTypes.func, // if label is a ReactElement, we recommend you pass in an onSearch function
+    onRenderValue: React.PropTypes.func, // if label is a ReactElement, we recommend you pass in an onRenderValue function
     isSearchable: React.PropTypes.bool,
     disabled: React.PropTypes.bool,
   }
@@ -49,12 +51,22 @@ export class EditableSelect extends React.Component {
     this.props.onChange(value);
   }
 
+  renderValue(option) {
+    if (this.props.value && this.props.onRenderValue) { // User can format the value how they want it
+      return this.props.onRenderValue(this.props.value);
+    } else if (option && option.label) { // Otherwise display the label
+      return option.label;
+    }
+
+    return this.props.placeholder;
+  }
+
   render() {
     if (! this.state.isBeingEdited) {
       const option = _.find(this.props.options, {value: this.props.value});
       return (
         <span className={`editable editable-click ${this.props.disabled ? 'disabled' : ''}`} onClick={e => this.onSetEditing(true)}>
-          {option && option.label || this.props.placeholder}
+          {this.renderValue(option)}
         </span>
       );
     }

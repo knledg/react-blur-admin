@@ -12,12 +12,13 @@ export class Select extends React.Component {
           React.PropTypes.string,
           React.PropTypes.number,
         ]),
-        label: React.PropTypes.string,
+        label: React.PropTypes.node,
       }),
     ),
     value: React.PropTypes.node,
     isSearchable: React.PropTypes.bool,
     isOpen: React.PropTypes.bool,
+    onSearch: React.PropTypes.func,
     onToggleOpen: React.PropTypes.func, // used when the parent needs to know that isOpen was toggled
   }
 
@@ -80,8 +81,17 @@ export class Select extends React.Component {
   }
 
   onTextSearch(event) {
-    const visibleOptions = this.getVisibleOptions(event.currentTarget.value);
-    this.setState({searchValue: event.currentTarget.value, visibleOptions});
+    let visibleOptions;
+    const searchValue = event.currentTarget.value;
+
+    // Used if the developer needs custom search functionality.
+    if (this.props.onSearch) {
+      visibleOptions = this.props.onSearch(searchValue, this.props.options);
+    } else {
+      visibleOptions = this.getVisibleOptions(event.currentTarget.value);
+    }
+
+    this.setState({searchValue, visibleOptions});
   }
 
   onHandleKeyDown(e) {
