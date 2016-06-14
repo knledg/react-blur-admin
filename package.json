@@ -12,7 +12,8 @@
     "prepublish": "npm run deploy",
     "test": "./node_modules/karma/bin/karma start --single-run --browsers PhantomJS",
     "test:watch": "./node_modules/karma/bin/karma start",
-    "lint": "node_modules/.bin/eslint --ext .js . --fix"
+    "lint": "node_modules/.bin/eslint --ext .js . --fix",
+    "preversion": "npm run lint && npm run test"
   },
   "repository": {
     "type": "git",
