@@ -20,9 +20,19 @@ describe('<Switch/>', function() {
     });
   });
 
+  it('offLabel is OFF by default', function() {
+    const component = shallow(<Switch onChange={noop} isOn={false}/>);
+    expect(component.find('span.bootstrap-switch-handle-off').text()).to.contain('OFF');
+  });
+
   it('onLabel renders text', function() {
     const component = shallow(<Switch onChange={noop} onLabel='testing on Label'/>);
     expect(component.find('div.switch-container').text()).to.contain('testing on Label');
+  });
+
+  it('offLabel is OFF by default', function() {
+    const component = shallow(<Switch onChange={noop} isOn={false}/>);
+    expect(component.find('span.bootstrap-switch-handle-off').text()).to.contain('OFF');
   });
 
   it('offLabel renders text', function() {
