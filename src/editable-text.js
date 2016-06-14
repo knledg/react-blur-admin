@@ -4,6 +4,7 @@ export class EditableText extends React.Component {
 
   static propTypes = {
     onChange: React.PropTypes.func.isRequired,
+    isOpen: React.PropTypes.bool,
     onValidate: React.PropTypes.func,
     value: React.PropTypes.node,
     hasError: React.PropTypes.bool,
@@ -14,6 +15,7 @@ export class EditableText extends React.Component {
 
   static defaultProps = {
     value: '',
+    isOpen: false,
     hasError: false,
     errorHelpLabel: '',
     placeholder: 'No Value',
