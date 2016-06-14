@@ -4,7 +4,7 @@ import React from 'react';
 import {shallow} from 'enzyme';
 import {expect} from 'chai';
 
-import { Button } from '../src';
+import { Button, Switch } from '../src';
 
 describe('<Button />', function() {
   describe('Without type property', function() {
@@ -23,9 +23,9 @@ describe('<Button />', function() {
   });
 
   it('Custom icon is rendered', function() {
-    const icon = <i/>;
+    const icon = <div className='testing'/>;
     const component = shallow(<Button icon={icon} />);
-    expect(component.find('i').containsMatchingElement(icon)).to.equal(true);
+    expect(component.find('div').hasClass('testing')).to.equal(true);
   });
 
   describe('Primary', function() {
