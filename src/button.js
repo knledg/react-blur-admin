@@ -27,12 +27,10 @@ export class Button extends React.Component {
     if (! (icon || this.props.icon) || this.props.isIconHidden) {
       return null;
     }
-
     if (this.props.icon) {
-      return this.props.icon;
+      return _.isString(this.props.icon) ? <i className={this.props.icon}/> : this.props.icon;
     }
-
-    return (_.isString(icon) ? <i className={icon}/> : {icon});
+    return <i className = {icon}/>;
   }
 
   render() {
