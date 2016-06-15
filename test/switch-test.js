@@ -15,6 +15,29 @@ describe('<Switch/>', function() {
       expect(component.find('.bootstrap-switch-handle-on').length).to.equal(1);
       expect(component.find('.bootstrap-switch-handle-off').length).to.equal(0);
     });
+    it('onLabel is ON by default', function() {
+      expect(component.find('div.switch-container').text()).to.contain('ON');
+    });
+  });
+
+  it('offLabel is OFF by default', function() {
+    const component = shallow(<Switch onChange={noop} isOn={false}/>);
+    expect(component.find('span.bootstrap-switch-handle-off').text()).to.contain('OFF');
+  });
+
+  it('onLabel renders text', function() {
+    const component = shallow(<Switch onChange={noop} onLabel='testing on Label'/>);
+    expect(component.find('div.switch-container').text()).to.contain('testing on Label');
+  });
+
+  it('offLabel is OFF by default', function() {
+    const component = shallow(<Switch onChange={noop} isOn={false}/>);
+    expect(component.find('span.bootstrap-switch-handle-off').text()).to.contain('OFF');
+  });
+
+  it('offLabel renders text', function() {
+    const component = shallow(<Switch onChange={noop} isOn={false} offLabel='testing off Label'/>);
+    expect(component.find('div.switch-container').text()).to.contain('testing off Label');
   });
 
   it('Switch is primary color', function() {
