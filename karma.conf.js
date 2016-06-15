@@ -9,13 +9,12 @@ module.exports = function(config) {
     ],
 
     preprocessors: {
-      // add webpack as preprocessor
       'src/**/*.js': ['webpack', 'sourcemap'],
       'test/**/*.js': ['webpack', 'sourcemap'],
     },
 
-    webpack: { //kind of a copy of your webpack config
-      devtool: 'inline-source-map', //just do inline source maps instead of the default
+    webpack: {
+      devtool: 'inline-source-map',
       module: {
         loaders: [
           {
@@ -43,11 +42,12 @@ module.exports = function(config) {
     },
 
     webpackServer: {
-      noInfo: true, //please don't spam the console when running in karma!
+      noInfo: true,
     },
 
     plugins: [
       'karma-chrome-launcher',
+      'karma-junit-reporter',
       'karma-mocha',
       'karma-phantomjs-launcher',
       'karma-sinon',
@@ -61,6 +61,12 @@ module.exports = function(config) {
         presets: ['es2015', 'react', 'stage-1'],
       },
     },
+
+    junitReporter: {
+      outputDir: process.env.CIRCLE_TEST_REPORTS || 'junit',
+      useBrowserName: false,
+    },
+
     reporters: ['dots'],
     port: 9876,
     colors: true,
