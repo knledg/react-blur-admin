@@ -24,15 +24,16 @@ export class EditableText extends React.Component {
 
   constructor(props) {
     super(props);
+
     this.state = {
       dirtyValue: this.props.value,
-      isBeingEdited: false,
+      isBeingEdited: this.props.isOpen,
     };
   }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.value !== this.props.value) {
-      this.setState({ dirtyValue: nextProps.value, isBeingEdited: false });
+      this.setState({ dirtyValue: nextProps.value, isBeingEdited: nextProps.isOpen });
     }
   }
 
