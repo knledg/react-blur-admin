@@ -12,10 +12,20 @@ describe('<Button />', function() {
     it('Has default class', function() {
       expect(component.find('button').hasClass('btn-default')).to.equal(true);
     });
-
     it('Should not have an icon', function() {
       expect(component.find('i')).to.have.length(0);
     });
+  });
+
+  it('Icon renders string', function() {
+    const component = shallow(<Button icon='fa fa-plus' />);
+    expect(component.find('i').hasClass('fa fa-plus')).to.equal(true);
+  });
+
+  it('Custom icon is rendered', function() {
+    const icon = <div className='testing'/>;
+    const component = shallow(<Button icon={icon} />);
+    expect(component.find('div').hasClass('testing')).to.equal(true);
   });
 
   describe('Primary', function() {
