@@ -10,7 +10,10 @@ export class EditableSelect extends React.Component {
     placeholder: React.PropTypes.string,
     options: React.PropTypes.arrayOf(
       React.PropTypes.shape({
-        value: React.PropTypes.string,
+        value: React.PropTypes.oneOfType([
+          React.PropTypes.number,
+          React.PropTypes.string,
+        ]),
         label: React.PropTypes.node,
       }),
     ),
