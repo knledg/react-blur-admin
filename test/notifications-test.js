@@ -1,10 +1,3 @@
-// import React from 'react';
-// import {shallow} from 'enzyme';
-// import {expect} from 'chai';
-// import {noop} from 'lodash';
-
-// import { Notifications } from '../src';
-
 describe('<Notifications/>', function() {
   it('Has default props');
 
