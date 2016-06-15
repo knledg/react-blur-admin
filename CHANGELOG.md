@@ -1,3 +1,26 @@
+## [v0.8.0]
+> June 15th, 2016
+
+### Switch
+- Add onLabel and offLabel (default to ON/OFF)
+
+### Button
+- Can now pass in a string for icon and it will render as the className for an i tag (can also pass in React Element for an icon)
+
+### Tabs
+- startTab can now be a string if the Tab component has a prop of name. Support for startTab of array index still supported.
+
+### CSS
+- Remove width property for .text-info
+
+### Checkbox
+- Bugfix: Correctly pass value to parent component when clicked
+
+### Radio
+- Bugfix: Correctly pass value to the parent component when clicked
+
+
+
 ## [v0.7.0]
 > June 14th, 2016
 
