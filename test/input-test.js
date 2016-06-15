@@ -87,6 +87,21 @@ describe('<Input/>', function() {
     expect(component.find('div.form-group').hasClass('has-warning')).to.equal(true);
   });
 
+  it('Checkbox sends checked value onClick', function() {
+    let isChecked = false;
+    const onChange = function(newValue) {
+      isChecked = newValue;
+    };
+
+    let component = shallow(<Input onChange={onChange} value={isChecked} type='checkbox'/>);
+    component.find('input').simulate('click');
+    expect(isChecked).to.equal(true);
+
+    component = shallow(<Input onChange={onChange} value={isChecked} type='checkbox'/>);
+    component.find('input').simulate('click');
+    expect(isChecked).to.equal(false);
+  });
+
   it('Checkbox renders red/error check', function() {
     const component = shallow(<Input onChange={noop} onValidate={() => false} hasFeedbackIcon={true} type='checkbox'/>);
     expect(component.find('div.form-group').hasClass('has-error')).to.equal(true);
@@ -117,6 +132,17 @@ describe('<Input/>', function() {
     const component = shallow(<Input onChange={noop} disabled={true} hasFeedbackIcon={true} type='radio'/>);
     expect(component.find('input').prop('type')).to.contain('radio');
     expect(component.find('input').prop('disabled')).to.equal(true);
+  });
+
+  it('Radio button sends value onClick', function() {
+    let value;
+    const onChange = function(newValue) {
+      value = newValue;
+    };
+
+    let component = shallow(<Input onChange={onChange} value='Hello world' type='radio'/>);
+    component.find('input').simulate('click');
+    expect(value).to.equal('Hello world');
   });
 
   it('Is addonLeft rendering text', function() {

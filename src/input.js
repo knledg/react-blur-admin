@@ -102,7 +102,7 @@ export class Input extends React.Component {
       <div className={className}>
         <div className="checkbox">
           <label className="custom-checkbox">
-            <input type="checkbox" disabled={this.props.disabled} value={this.props.value} />
+            <input type="checkbox" disabled={this.props.disabled} checked={this.props.value} onClick={e => this.props.onChange(! this.props.value)} />
             <span>{this.props.label}</span>
           </label>
         </div>
@@ -117,7 +117,8 @@ export class Input extends React.Component {
           disabled={this.props.disabled}
           type="radio"
           name={this.props.name}
-          value={this.props.value} />
+          value={this.props.value}
+          onClick={e => this.props.onChange(this.props.value)} />
         <span>{this.props.label}</span>
       </label>
     );
