@@ -1,42 +1,43 @@
-import React, { PropTypes } from 'react';
-import { map, reduce, filter } from 'lodash';
+import React, {PropTypes} from 'react';
+import {map, find} from 'lodash';
 
 // Components
-import { Panel } from './panel';
+import {Panel} from './panel';
 
 export class Tabs extends React.Component {
   static propTypes = {
     align: PropTypes.string,
-    startTab: PropTypes.number,
+    startTab: PropTypes.oneOfType([
+      PropTypes.number,
+      PropTypes.string,
+    ]),
   }
 
   static defaultProps = {
     align: 'top',
-    startTab: null,
+    startTab: 1,
   }
 
   constructor(props) {
     super(props);
 
     this.state = {
-      activeTab: this.props.startTab || 1,
+      activeTab: this.props.startTab,
       tabs: [],
-      clicked: false,
     };
   }
 
-  shouldComponentUpdate(nextProps, nextState) {
-    return nextState.activeTab !== this.state.activeTab;
-  }
-
-  onSetActiveTab(activeTab, event) {
+  onSetActiveTab(tab, index, event) {
     event.preventDefault();
-    const state = this.state.clicked ? { activeTab } : { activeTab, clicked: true };
-    this.setState(state);
-  }
 
-  getActiveTab(tabs, activeTab) {
-    return filter(tabs, (tab, index) => activeTab === index + 1);
+    let activeTab;
+    if (_.isString(this.props.startTab)) {
+      activeTab = tab.props.name;
+    } else {
+      activeTab = index + 1;
+    }
+
+    this.setState({activeTab});
   }
 
   getTabsAlignment(alignment) {
@@ -51,38 +52,61 @@ export class Tabs extends React.Component {
     }
   }
 
-  renderTabContent(tabs, activeTab) {
-    return reduce(this.getActiveTab(tabs, activeTab), (acc, tab) => {
-      return tab.props.children;
-    }, []);
-  }
-
-  renderTabs(tabs, activeTab) {
+  renderTabs(tabs) {
     return map(tabs, (tab, index) => {
-      const isActive = activeTab === index + 1 ? 'active' : '';
+      let isActive = '';
+      if (
+        (_.isString(this.state.activeTab) && tab.props.name === this.state.activeTab) ||
+        (_.isNumber(this.state.activeTab) && this.state.activeTab === index + 1)) {
+        // If the user passes in a key to the tab and startTab is a string, check if it's active via the Tab's name. e.g.
+        /*
+          <Tabs startTab='first'>
+            <Tab name='first'>
+              First
+            </Tab>
+            <Tab name='second'>
+              Second
+            </Tab>
+          </Tabs>
+         */
+        // Else if startTab is a number, calculate based on the order the tabs are passed in
+        isActive = 'active';
+      }
+
       return (
-        <li className={isActive} onClick={this.onSetActiveTab.bind(this, index + 1)} key={index}>
+        <li className={isActive} onClick={e => this.onSetActiveTab(tab, index, e)} key={index}>
           {tab}
         </li>
       );
     });
   }
 
+  renderActiveTabBody(tabs) {
+    // if this.state.activeTab is a string, try changing if the <Tab>s have a name and if one has a matching name, return it
+    let activeTab;
+    if (_.isString(this.state.activeTab)) {
+      activeTab = find(tabs, tab => tab.props.name === this.state.activeTab);
+    } else {
+      activeTab = find(tabs, (tab, index) => this.state.activeTab === index + 1);
+    }
+
+    return activeTab ? activeTab.props.children : null;
+  }
+
   render() {
     const alignment = this.getTabsAlignment(this.props.align);
     const isHorizontal = alignment === '';
-    const startTab = this.props.startTab && !this.state.clicked ? this.props.startTab : this.state.activeTab;
 
     return (
       <Panel className={(isHorizontal ? 'horizontal-tabs' : '') + ' tabs-panel'}>
         <div className={alignment}>
           <ul className='nav nav-tabs'>
-           {this.renderTabs(this.props.children, startTab)}
+           {this.renderTabs(this.props.children)}
           </ul>
 
           <div className='tab-content'>
             <div className='tab-pane active'>
-              {this.renderTabContent(this.props.children, startTab)}
+              {this.renderActiveTabBody(this.props.children)}
             </div>
           </div>
         </div>

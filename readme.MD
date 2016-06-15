@@ -5,6 +5,10 @@ Note: This is currently partial implementation of Blur Admin. This repo includes
 
 Individual pages/demos/layouts can be found in the [React Webpack Skeleton repo](https://github.com/knledg/react-webpack-skeleton).
 
+### Build Status
+
+[![CircleCI](https://circleci.com/gh/knledg/react-blur-admin/tree/master.svg?style=svg)](https://circleci.com/gh/knledg/react-blur-admin/tree/master)
+
 ### Currently Implemented
 
 - Text Inputs
@@ -21,7 +25,8 @@ Individual pages/demos/layouts can be found in the [React Webpack Skeleton repo]
 - Textareas
 - Pagination (diverged from Blur's implementation slightly for additional flexibility)
 - Notifications
--  Alerts
+- Alerts
+
 ### Needs Implementation
 
 - Accordions

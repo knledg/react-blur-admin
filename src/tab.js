@@ -9,4 +9,5 @@ export const Tab = ({ title, onClick }) => {
 Tab.propTypes = {
   title: React.PropTypes.string,
   onClick: React.PropTypes.func,
+  name: React.PropTypes.string,
 };
