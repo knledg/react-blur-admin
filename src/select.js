@@ -34,9 +34,8 @@ export class Select extends React.Component {
   constructor(props) {
     super(props);
 
-    const option = _.find(this.props.options, {value: this.props.value});
     this.state = {
-      value: option && option.label || this.props.placeholder,
+      value: this.getValue(),
       activeIndex: 0,
       isOpen: this.props.isOpen,
       searchValue: '',
@@ -55,6 +54,10 @@ export class Select extends React.Component {
 
     if (nextProps.options !== this.props.options) {
       this.setState({visibleOptions: nextProps.options, searchValue: ''});
+    }
+
+    if (this.props.value && ! nextProps.value) {
+      this.setState({activeIndex: 0, value: this.getValue(nextProps)});
     }
   }
 
@@ -125,6 +128,11 @@ export class Select extends React.Component {
     }
 
     return e;
+  }
+
+  getValue(props = this.props) {
+    const option = _.find(props.options, {value: props.value});
+    return option && option.label || props.placeholder;
   }
 
   getVisibleOptions(searchValue) {

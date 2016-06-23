@@ -10,9 +10,9 @@
   }
 }
 
-.body.badmin-transparent {
+body.badmin-transparent {
   .modal-content {
-    label.control-label {
+    h1, h2, h3, h4, h5, h6, label.control-label {
       color: $default-text;
     }
   }
