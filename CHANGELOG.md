@@ -1,3 +1,13 @@
+## [v0.8.1]
+> June 23rd, 2016
+
+### CSS
+Bugfix: Modal h tags and labels were same font color as background color
+
+### Select
+Bugfix: If parent component changed value back to null, it wasn't reflected in the Select component
+
+
 ## [v0.8.0]
 > June 15th, 2016
 
