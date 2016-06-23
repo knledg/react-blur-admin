@@ -94,6 +94,7 @@ export class Tabs extends React.Component {
   }
 
   render() {
+    const tabs = _.isArray(this.props.children) ? this.props.children : [this.props.children];
     const alignment = this.getTabsAlignment(this.props.align);
     const isHorizontal = alignment === '';
 
@@ -101,12 +102,12 @@ export class Tabs extends React.Component {
       <Panel className={(isHorizontal ? 'horizontal-tabs' : '') + ' tabs-panel'}>
         <div className={alignment}>
           <ul className='nav nav-tabs'>
-           {this.renderTabs(this.props.children)}
+           {this.renderTabs(tabs)}
           </ul>
 
           <div className='tab-content'>
             <div className='tab-pane active'>
-              {this.renderActiveTabBody(this.props.children)}
+              {this.renderActiveTabBody(tabs)}
             </div>
           </div>
         </div>
