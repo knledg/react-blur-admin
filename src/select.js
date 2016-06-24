@@ -6,6 +6,7 @@ export class Select extends React.Component {
   static propTypes = {
     placeholder: React.PropTypes.string,
     onChange: React.PropTypes.func,
+    onRenderValue: React.PropTypes.func,
     options: React.PropTypes.arrayOf(
       React.PropTypes.shape({
         value: React.PropTypes.oneOfType([
@@ -131,6 +132,10 @@ export class Select extends React.Component {
   }
 
   getValue(props = this.props) {
+    if (this.props.value && this.props.onRenderValue) {
+      return this.props.onRenderValue(this.props.value);
+    }
+
     const option = _.find(props.options, {value: props.value});
     return option && option.label || props.placeholder;
   }

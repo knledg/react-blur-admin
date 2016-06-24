@@ -21,6 +21,7 @@ export class EditableSelect extends React.Component {
     onRenderValue: React.PropTypes.func, // if label is a ReactElement, we recommend you pass in an onRenderValue function
     isSearchable: React.PropTypes.bool,
     disabled: React.PropTypes.bool,
+    isBeingEdited: React.PropTypes.bool,
   }
 
   static defaultProps = {
@@ -31,13 +32,15 @@ export class EditableSelect extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isBeingEdited: false,
+      isBeingEdited: this.props.isBeingEdited || false,
     };
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.value !== this.props.value) {
+    if (nextProps.value !== this.props.value && ! nextProps.hasOwnProperty('isBeingEdited')) {
       this.setState({isBeingEdited: false});
+    } else if (nextProps.isBeingEdited !== this.props.isBeingEdited) {
+      this.setState({isBeingEdited: nextProps.isBeingEdited});
     }
   }
 

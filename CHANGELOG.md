@@ -1,3 +1,13 @@
+## [v0.8.2]
+> June 23rd, 2016
+
+### EditableSelect
+Ability to pass in prop `isBeingEdited` to have it start in an "open" state
+
+### Select
+Ability to pass in an `onRenderValue` function so that, when open, it will display a custom value at the top. This is useful when label for each of your options is a React Element of some sort.
+
+
 ## [v0.8.1]
 > June 23rd, 2016
 
