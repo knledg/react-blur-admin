@@ -123,40 +123,16 @@ h5 {
   }
 }
 
-.color-widget {
-  text-align: center;
-  font-size: 14px;
-  font-weight: $font-normal;
-  p {
-    line-height: 17px;
-  }
+.yellow-text {
+  color: $warning-bg; // JW - don't use p for React, removed color-widget wrapper
+}
 
-  .section-block {
-    margin: 14px 0;
-  }
+.red-text {
+  color: $danger-bg; // JW - don't use p for React, removed color-widget wrapper
+}
 
-  .yellow-text {
-    color: $warning-bg; // JW - don't use p for React
-  }
-
-  .red-text {
-    color: $danger-bg; // JW - don't use p for React
-  }
-
-  .links {
-    h3 {
-      margin-bottom: 10px;
-    }
-    p {
-      margin-bottom: 0;
-      &.hovered {
-        a {
-          color: $hoverlink;
-        }
-      }
-    }
-  }
-
+.blue-text {
+  color: $info-bg;
 }
 
 .lists-widget {

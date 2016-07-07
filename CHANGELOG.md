@@ -1,3 +1,12 @@
+## [v0.9.0]
+> July 7th, 2016
+
+### CSS
+- Add search results css (see React Webpack Skeleton for demo)
+- Added .blue-text class, removed .red-text and .yellow-text from the .color-widget container
+- Delete .color-widget container which mostly just centered the text. Allows the user to optionally center text with Row/Col system or Bootstraps text-center instead of requiring it.
+
+
 ## [v0.8.2]
 > June 23rd, 2016
 
