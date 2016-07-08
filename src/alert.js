@@ -50,7 +50,7 @@ export class Alert extends React.Component {
 
   render() {
     return (
-      <div className={`alert bg-${this.getAlertClass()} ${this.props.isDismissible ? 'closable' : ''}`}>
+      <div className={`alert bg-${this.getAlertClass()} ${this.props.isDismissible ? 'closable' : ''} ${this.props.className}`}>
         {this.renderCloseButton()}
         {this.props.children}
       </div>
