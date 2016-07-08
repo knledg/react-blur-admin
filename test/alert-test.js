@@ -13,6 +13,12 @@ describe('<Alert />', function() {
       expect(component.find('div').hasClass('alert bg-success')).to.equal(true);
     });
   });
+
+  it('Has a top div to pass in className', function() {
+    const component = shallow(<Alert className='classname' />);
+    expect(component.find('div.alert').hasClass('classname')).to.equal(true);
+  });
+
   it('Has type of warning', function() {
     const component = shallow(<Alert type='warning' />);
     expect(component.find('div').hasClass('alert bg-warning')).to.equal(true);
