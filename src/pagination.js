@@ -51,7 +51,7 @@ export class Pagination extends React.Component {
 
   onSubmit() {
     if (this.isValidPage(this.state.dirtyValue)) {
-      this.props.onChange(this.state.dirtyValue);
+      this.props.onChange(Number(this.state.dirtyValue));
     }
   }
 
