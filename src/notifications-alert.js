@@ -1,49 +1,53 @@
 import React from 'react';
-import {noop} from 'lodash';
 import {Link} from 'react-router';
 
 export class NotificationsAlert extends React.Component {
 
   static propTypes = {
-    onChange: React.PropTypes.func.isRequired,
-    notifications: React.PropTypes.number.isRequired,
-    className: React.PropTypes.string,
-    isExpanded: React.PropTypes.bool,
-    hasPopUp: React.PropTypes.bool,
+    notificationCount: React.PropTypes.number.isRequired,
+    settingsUrl: React.PropTypes.string,
+    allNotificationsUrl: React.PropTypes.string,
+    markAllAsRead: React.PropTypes.func,
   }
 
-  static defaultProps = {
-    onChange: noop,
-    hasPopUp: true,
-    isExpanded: false,
-    className: '',
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      isExpanded: false,
+    };
   }
 
-  onChange(value) {
-
-  }
-
-  renderNotifications() {
-
+  onClick() {
+    this.setState({
+      isExpanded: !this.state.isExpanded,
+    });
   }
 
   render() {
     return (
-      <div className={`'dropdown-toggle' ${this.state.hasPopUp} ${this.state.isExpanded ? 'expanded' : ''}`}>
-        <i className='fa fa-bell-o'/>
-        <span>{this.props.notifications}</span>
-        <div className='notification-ring'></div>
-        <div className='top dropdown-menu dropdown-menu'/>
-        <i className='dropdown-arr'/>
-        <div className='header clearfix'>
-          <strong>Notifications</strong>
-          <Link to=''>Mark All as Read</Link>
-          <Link to=''>Settings</Link>
-        </div>
-        <div className='msg-list'>
-          {this.renderNotifications()}
-        </div>
-      </div>
+
+      <ul className='al-msg-center clearfix'>
+        <li className={`dropdown ${this.state.isExpanded ? 'open' : ''}`}>
+          <Link to='' className='dropdown-toggle' onClick={this.onClick.bind(this)}>
+            <i className='fa fa-bell-o'/>
+            <span>{this.props.notificationCount}</span>
+            <div className='notification-ring'/>
+          </Link>
+          <div className='top-dropdown-menu dropdown-menu'>
+            <i className='dropdown-arr'/>
+            <div className='header clearfix'>
+              <strong className='red-text'>Notifications</strong>
+                {this.props.markAllAsRead ? <Link onClick={this.props.markAllAsRead} to=''>Mark All as Read</Link> : ''}
+                {this.props.settingsUrl ? <Link to={this.props.settingsUrl}>Settings</Link> : ''}
+            </div>
+            <div className='msg-list'>
+              {this.props.children}
+            </div>
+              {this.props.allNotificationsUrl ? <Link to={this.props.allNotificationsUrl}>See all notifications</Link> : ''}
+          </div>
+        </li>
+      </ul>
     );
   }
 }
