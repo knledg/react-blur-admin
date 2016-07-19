@@ -9,6 +9,7 @@
     "deployassets": "cp -R src/assets/fonts dist/assets && cp -R src/assets/img dist/assets",
     "deploy": "npm run clean && npm run deployjs && npm run deploycss && npm run deployassets",
     "deployjs": "babel -d dist src",
+    "lint": "node_modules/.bin/eslint --ext js src/",
     "prepublish": "npm run deploy",
     "test": "./node_modules/karma/bin/karma start --single-run --browsers PhantomJS",
     "test:watch": "./node_modules/karma/bin/karma start"
