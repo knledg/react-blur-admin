@@ -6,15 +6,14 @@ export class NotificationAlert extends React.Component {
     user: React.PropTypes.object,
     subject: React.PropTypes.string,
     createdAt: React.PropTypes.string,
-    url: React.PropTypes.string,
-    router: React.PropTypes.string,
+    onClick: React.PropTypes.func,
     relativeTime: React.PropTypes.string,
     timeStamp: React.PropTypes.string,
   }
 
   onClick() {
-    if (this.props.url) {
-      this.props.router.push(this.props.url);
+    if (this.props.onClick) {
+      this.props.onClick();
     }
   }
 
