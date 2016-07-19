@@ -1,5 +1,4 @@
 import React from 'react';
-import moment from 'moment';
 
 export class NotificationAlert extends React.Component {
 
@@ -9,6 +8,8 @@ export class NotificationAlert extends React.Component {
     createdAt: React.PropTypes.string,
     url: React.PropTypes.string,
     router: React.PropTypes.string,
+    relativeTime: React.PropTypes.string,
+    timeStamp: React.PropTypes.string,
   }
 
   onClick() {
@@ -25,7 +26,7 @@ export class NotificationAlert extends React.Component {
         </div>
         <div className='msg-area'>
           <div>{this.props.subject}</div>
-          <span>{moment(this.props.createdAt).fromNow()}</span>
+          <span title={this.props.timestamp}>{this.props.relativeTime}</span>
         </div>
       </div>
     );
