@@ -9,11 +9,11 @@ describe('<Preloader />', function() {
     const component = mount(<Preloader />);
 
     it('Contains preloader container', function() {
-      expect(component.ref('container').hasClass('preloader-component-container')).to.equal(true);
+      expect(component.find('div').at(0).hasClass('preloader-component-container')).to.equal(true);
     });
 
     it('Contains preloader component', function() {
-      expect(component.ref('component').hasClass('preloader-component')).to.equal(true);
+      expect(component.find('div').at(1).hasClass('preloader-component')).to.equal(true);
     });
   });
 });
