@@ -26,7 +26,7 @@ export class NotificationAlert extends React.Component {
         </div>
         <div className='msg-area'>
           <div>{this.props.subject}</div>
-          <span title={this.props.timestamp}>{this.props.relativeTime}</span>
+          <span title={this.props.timeStamp}>{this.props.relativeTime}</span>
         </div>
       </div>
     );
