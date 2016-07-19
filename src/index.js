@@ -7,6 +7,8 @@ export * from './input';
 export * from './loading';
 export * from './modal';
 export * from './notification';
+export * from './notification-alert';
+export * from './notifications-alert';
 export * from './notifications';
 export * from './preloader';
 export * from './page';
