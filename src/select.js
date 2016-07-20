@@ -5,6 +5,7 @@ export class Select extends React.Component {
 
   static propTypes = {
     placeholder: React.PropTypes.string,
+    maxHeight: React.PropTypes.string,
     onChange: React.PropTypes.func,
     onRenderValue: React.PropTypes.func,
     options: React.PropTypes.arrayOf(
@@ -210,8 +211,16 @@ export class Select extends React.Component {
       return this.renderOption(option, index, isSelected, isActive);
     });
 
+    let style = {};
+    if (this.props.maxHeight) {
+      style = {
+        maxHeight: this.props.maxHeight,
+        overflow: 'auto',
+      };
+    }
+
     return (
-      <ul className='dropdown-menu inner'>
+      <ul style={style} className='dropdown-menu inner'>
         {options}
       </ul>
     );

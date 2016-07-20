@@ -8,6 +8,7 @@ export class EditableSelect extends React.Component {
     onChange: React.PropTypes.func.isRequired,
     value: React.PropTypes.node,
     placeholder: React.PropTypes.string,
+    maxHeight: React.PropTypes.string,
     options: React.PropTypes.arrayOf(
       React.PropTypes.shape({
         value: React.PropTypes.oneOfType([
