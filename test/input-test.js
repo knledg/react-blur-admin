@@ -13,6 +13,12 @@ describe('<Input/>', function() {
     expect(component.find('input').hasClass('autoFocus')).to.equal(false);
     expect(component.find('input').prop('disabled')).to.equal(false);
   });
+describe('<Input/>', function() {
+  it('Has default props');
+  it('Type is success', function() {
+    const component = shallow(<Input onChange={noop} validationResult={true} type='success'/>);
+    expect(component.find('input').hasClass('success')).to.equal(true);
+  });
 
   it('Is a text type', function() {
     const component = shallow(<Input onChange={noop} onValidate={() => true} type='text'/>);
@@ -244,3 +250,4 @@ describe('<Input/>', function() {
     expect(onValidate.calledOnce).to.equal(true);
   });
 });
+
