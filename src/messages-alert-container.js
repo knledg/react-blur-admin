@@ -43,7 +43,7 @@ export class MessagesAlertContainer extends React.Component {
             <div className='msg-list'>
               {this.props.children}
             </div>
-              {this.props.allMessagesOnClick ? <a onClick={this.props.allMessagesOnClick}>See all message nofications</a> : ''}
+              {this.props.allMessagesOnClick ? <a onClick={this.props.allMessagesOnClick}>See all messages</a> : ''}
           </div>
         </li>
       </ul>
