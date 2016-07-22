@@ -26,12 +26,12 @@ export class Accordion extends React.Component {
   //   return null;
   // }
 
-  isPanelOpen() {
-    if (this.props.panelOpen) {
-      return this.props.panelOpen;
-    }
-    else if null;
-  }
+  // isPanelOpen() {
+  //   if (this.props.panelOpen) {
+  //     return this.props.panelOpen;
+  //   }
+  //   else if null;
+  // }
 
   renderIcon(icon) {
     if (!this.props.icon) {
