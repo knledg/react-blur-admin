@@ -5,16 +5,15 @@
   "main": "dist",
   "scripts": {
     "clean": "rm -rf dist && mkdir dist && mkdir dist/assets && mkdir dist/assets/styles && mkdir dist/assets/fonts && mkdir dist/assets/img",
-    "deploycss": "node-sass -r src/assets/styles/app.scss dist/assets/styles/react-blur-admin.min.css && cp -R src/assets/styles/bootstrap/fonts/* dist/assets/fonts",
-    "deployassets": "cp -R src/assets/fonts dist/assets && cp -R src/assets/img dist/assets",
     "deploy": "npm run clean && npm run deployjs && npm run deploycss && npm run deployassets",
+    "deployassets": "cp -R src/assets/fonts dist/assets && cp -R src/assets/img dist/assets",
+    "deploycss": "node-sass -r src/assets/styles/app.scss dist/assets/styles/react-blur-admin.min.css && cp -R src/assets/styles/bootstrap/fonts/* dist/assets/fonts",
     "deployjs": "babel -d dist src",
     "lint": "node_modules/.bin/eslint --ext js src/",
     "prepublish": "npm run deploy",
+    "preversion": "npm run lint && npm run test",
     "test": "./node_modules/karma/bin/karma start --single-run --browsers PhantomJS --reporters=junit,dots",
-    "test:watch": "./node_modules/karma/bin/karma start",
-    "lint": "node_modules/.bin/eslint --ext .js . --fix",
-    "preversion": "npm run lint && npm run test"
+    "test:watch": "./node_modules/karma/bin/karma start"
   },
   "repository": {
     "type": "git",

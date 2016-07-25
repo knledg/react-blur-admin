@@ -17,7 +17,7 @@ describe('<NotificationsAlert/>', function() {
     expect(component.find('a.dropdown-toggle').length).to.equal(1);
   });
   it('has a bell icon', function() {
-    expect(component.find('i').at(0).hasClass('fa fa-bell-o')).to.equal(true);
+    expect(component.find('i').at(0).hasClass('fa-bell-o')).to.equal(true);
   });
   it('has a span', function() {
     expect(component.find('span').length).to.equal(1);
@@ -29,7 +29,7 @@ describe('<NotificationsAlert/>', function() {
     expect(component.find('i').at(1).hasClass('dropdown-arr')).to.equal(true);
   });
   it('has a div with header clearfix class', function() {
-    expect(component.find('div.header').hasClass('header clearfix')).to.equal(true);
+    expect(component.find('div.header').hasClass('clearfix')).to.equal(true);
   });
   it('has a text of Notifications', function() {
     expect(component.find('strong').text()).to.equal('Notifications');
