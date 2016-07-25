@@ -8,7 +8,7 @@ export class MessagesAlert extends React.Component {
     createdAt: React.PropTypes.string,
     onClick: React.PropTypes.func,
     relativeTime: React.PropTypes.string,
-    timeStamp: React.PropTypes.string,
+    timestamp: React.PropTypes.string,
   }
 
   onClick() {
@@ -25,7 +25,7 @@ export class MessagesAlert extends React.Component {
         </div>
         <div className='msg-area'>
           <div>{this.props.subject}</div>
-          <span title={this.props.timeStamp}>{this.props.relativeTime}</span>
+          <span title={this.props.timestamp}>{this.props.relativeTime}</span>
         </div>
       </div>
     );
