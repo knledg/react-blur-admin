@@ -1,6 +1,7 @@
 import React from 'react';
-import {mount} from 'enzyme';
+import sinon from 'sinon';
 import {expect} from 'chai';
+import {mount} from 'enzyme';
 import {noop} from 'lodash';
 
 import { Tab } from '../src';

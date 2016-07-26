@@ -1,10 +1,13 @@
 /* eslint-disable no-console */
 
 import React from 'react';
-import {shallow} from 'enzyme';
+import sinon from 'sinon';
 import {expect} from 'chai';
+import {shallow} from 'enzyme';
 
 import { Button } from '../src';
+
+require('mocha-sinon');
 
 describe('<Button />', function() {
   describe('Without type property', function() {
@@ -173,11 +176,11 @@ describe('<Button />', function() {
   });
 
   before(function() {
-    sinon.stub(console, 'error', (warning) => {throw new Error(warning);});
+    sinon.stub(console, 'error', (warning) => { throw new Error(warning); });
   });
 
   it('Should throw proptype error with invalid size property', function() {
-    expect(function() { shallow(<Button size='invalid' />);}).to.throw(/Invalid prop `size` of value/);
+    expect(function() { shallow(<Button size='invalid' />); }).to.throw(/Invalid prop `size` of value/);
   });
 
   after(function() {
