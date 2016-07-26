@@ -21,7 +21,7 @@ export class Modal extends React.Component {
     size: 'md',
     align: 'left',
     title: '',
-    type: 'success',
+    type: 'primary',
     isOpen: false,
     icon: '',
     buttonText: 'OK',
@@ -31,6 +31,9 @@ export class Modal extends React.Component {
     switch (this.props.type) {
     case 'success':
       return 'success';
+
+    case 'primary':
+      return 'primary';
 
     case 'remove':
     case 'danger':
