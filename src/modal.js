@@ -21,7 +21,7 @@ export class Modal extends React.Component {
     size: 'md',
     align: 'left',
     title: '',
-    type: 'primary',
+    type: 'success',
     isOpen: false,
     icon: '',
     buttonText: 'OK',
