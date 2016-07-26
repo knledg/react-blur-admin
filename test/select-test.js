@@ -1,5 +1,6 @@
 import React from 'react';
 import {mount} from 'enzyme';
+import {shallow} from 'enzyme';
 import {expect} from 'chai';
 
 import { Select } from '../src';
@@ -49,5 +50,33 @@ describe('<Select/>', function() {
   it('has no options', function() {
     const newComponent = mount(<Select placeholder='placeholder' isSearchable={false}/>);
     expect(newComponent.find('ul-dropdown-menu li')).to.have.length(0);
+  });
+  it('has a placeholder', function() {
+    const newComponent = mount(<Select placeholder='placeholder' isSearchable={false}/>);
+    expect(newComponent.find('div.form-group').text()).to.contain('placeholder');
+  });
+  it('has a maxheight', function() {
+    const options2 =
+      [
+      {value: 'one'},
+      {value: 'two'},
+      {value: 'three'},
+      ];
+    const newComponent = mount(<Select placeholder='placeholder' maxHeight='50px' options={options2} isSearchable={false}/>);
+    expect(newComponent.find('ul').prop('style')).property('maxHeight', '50px');
+  });
+  it('renders a value', function() {
+    const options3 =
+      [
+      {value: 'one'},
+      {value: 'two'},
+      {value: 'three'},
+      ];
+    const newComponent = mount(<Select placeholder='placeholder' options={options3} value='one' isSearchable={false}/>);
+    expect(newComponent.find('li').at(0).hasClass('selected')).to.equal(true);
+  });
+  it('is open', function() {
+    const newComponent = mount(<Select placeholder='placeholder' isOpen={true} isSearchable={false}/>);
+    expect(newComponent.find('div.btn-group').hasClass('open')).to.equal(true);
   });
 });
