@@ -6,6 +6,7 @@ export class Modal extends React.Component {
 
   static propTypes = {
     title: React.PropTypes.string,
+    buttonText: React.PropTypes.string,
     className: React.PropTypes.string,
     size: React.PropTypes.string,
     icon: React.PropTypes.string,
@@ -23,12 +24,16 @@ export class Modal extends React.Component {
     type: 'success',
     isOpen: false,
     icon: '',
+    buttonText: 'OK',
   }
 
   getHeaderClass() {
     switch (this.props.type) {
     case 'success':
       return 'success';
+
+    case 'primary':
+      return 'primary';
 
     case 'remove':
     case 'danger':
@@ -111,12 +116,12 @@ export class Modal extends React.Component {
   }
 
   renderFooter() {
-    if (! this.props.onClose) {
+    if (!this.props.buttonText) {
       return null;
     }
     return (
       <div className='modal-footer'>
-        <Button type={this.props.type} isIconHidden={true} size='sm' title='OK' onClick={this.props.onClose} />
+        <Button type={this.props.type} isIconHidden={true} size='sm' title={this.props.buttonText} onClick={this.props.onClose ? this.props.onClose : null} />
       </div>
     );
   }
