@@ -124,15 +124,15 @@ h5 {
 }
 
 .yellow-text {
-  color: $warning-bg; // JW - don't use p for React, removed color-widget wrapper
+  color: $warning-bg !important; // JW - don't use p for React, removed color-widget wrapper
 }
 
 .red-text {
-  color: $danger-bg; // JW - don't use p for React, removed color-widget wrapper
+  color: $danger-bg !important; // JW - don't use p for React, removed color-widget wrapper
 }
 
 .blue-text {
-  color: $info-bg;
+  color: $info-bg !important;
 }
 
 .lists-widget {
