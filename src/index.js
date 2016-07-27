@@ -5,6 +5,8 @@ export * from './editable-text';
 export * from './editable-select';
 export * from './input';
 export * from './loading';
+export * from './messages-alert';
+export * from './messages-alert-container';
 export * from './modal';
 export * from './notification';
 export * from './notification-alert';
