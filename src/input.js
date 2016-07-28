@@ -102,7 +102,13 @@ export class Input extends React.Component {
       <div className={className}>
         <div className="checkbox">
           <label className="custom-checkbox">
-            <input type="checkbox" disabled={this.props.disabled} checked={this.props.value} onClick={e => this.props.onChange(! this.props.value)} />
+            <input
+              type="checkbox"
+              disabled={this.props.disabled}
+              checked={this.props.value}
+              onClick={e => this.props.onChange(! this.props.value)}
+              ref='input'
+             />
             <span>{this.props.label}</span>
           </label>
         </div>
@@ -118,7 +124,9 @@ export class Input extends React.Component {
           type="radio"
           name={this.props.name}
           value={this.props.value}
-          onClick={e => this.props.onChange(this.props.value)} />
+          onClick={e => this.props.onChange(this.props.value)}
+          ref='input'
+        />
         <span>{this.props.label}</span>
       </label>
     );
@@ -139,7 +147,9 @@ export class Input extends React.Component {
         key={this.props.id}
         onChange={this.props.onChange}
         onKeyDown={this.props.onKeyDown}
-        value={this.props.value} />
+        value={this.props.value}
+        ref='input'
+      />
     );
   }
 
