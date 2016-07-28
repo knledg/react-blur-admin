@@ -37,6 +37,7 @@ export class Textarea extends React.Component {
         placeholder={this.props.placeholder}
         onChange={this.props.onChange}
         disabled={this.props.disabled}
+        ref='textarea'
         ></textarea>
     );
   }
