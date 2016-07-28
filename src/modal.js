@@ -125,7 +125,7 @@ export class Modal extends React.Component {
           isIconHidden={true}
           size='sm'
           title={this.props.buttonText ? this.props.buttonText : 'OK'}
-          onClick={this.props.onClose ? this.props.onClose : null} />
+          onClick={this.props.onClose} />
       </div>
     );
   }
