@@ -1,3 +1,46 @@
+## [v0.10.0]
+> July 28th, 2016
+
+**BREAKING CHANGES**
+
+- Changed _msgCenter css from `a` tag to `div`
+
+### CSS
+- Changed css in Msg _msgCenter.scss from a tag to div for stylistic preferences
+
+### Messages-Alert and Container
+- Added a message alert component in page top nav bar
+- Added a message alert container component that corresponds with our message alerts
+
+### SearchBar
+- Added necessary css for search bar component (corresponds with Search Bar added to React Webpack Skeleton)
+
+### Bug Fix Alert Component
+- optional className was not being passed in **FIXED**
+- Added test to show className is now working
+
+### Bug Fix Pagination Component
+- Pagination was not working properly because it was returning a string not a number **FIXED**
+- Pagination now only takes a number from the used value
+
+### Notifications Navigation Bar Component
+- Added a notifications alert component to our page top to display notification count and their messages
+- Behavior: When a child notification is passed into the notifications container they will be displayed with their message, the user who sent it, and a created at timestamp
+- Component includes an icon with animation to display notification count
+
+### Add MaxHeight prop to Select Dropdowns
+- Added an optional maxHeight property to our select dropdown components
+- This property will allow for a scrolling feature if the maxHeight container is exceeded
+- Behavior: if maxHeight is being passed dropdown will have a max height of that value
+
+### Modal
+- Add primary modal type originally user could not pass in primary type **FIXED**
+- Added buttonText prop to allow users to pass in any text inside the button as oppose to the default button title of 'OK' this allows for a more customizable modal
+
+### Add Refs to Native Input Elements
+- Allows users to get access to the DOM elements within components if needed
+
+
 ## [v0.9.0]
 > July 7th, 2016
 
