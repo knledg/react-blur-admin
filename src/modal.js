@@ -24,7 +24,6 @@ export class Modal extends React.Component {
     type: 'success',
     isOpen: false,
     icon: '',
-    buttonText: 'OK',
   }
 
   getHeaderClass() {
@@ -116,7 +115,7 @@ export class Modal extends React.Component {
   }
 
   renderFooter() {
-    if (!this.props.buttonText && !this.props.onClose) {
+    if (!this.props.onClose) {
       return null;
     }
     return (
@@ -125,7 +124,7 @@ export class Modal extends React.Component {
           type={this.props.type}
           isIconHidden={true}
           size='sm'
-          title={this.props.buttonText}
+          title={this.props.buttonText ? this.props.buttonText : 'OK'}
           onClick={this.props.onClose ? this.props.onClose : null} />
       </div>
     );
