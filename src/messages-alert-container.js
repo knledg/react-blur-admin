@@ -28,7 +28,7 @@ export class MessagesAlertContainer extends React.Component {
 
       <ul className='al-msg-center clearfix'>
         <li className={`dropdown ${this.state.isExpanded ? 'open' : ''}`}>
-          <a className='dropdown-toggle' onClick={this.onClick.bind(this)}>
+          <a className='msg dropdown-toggle' onClick={this.onClick.bind(this)}>
             <i className='fa fa-envelope-o'/>
             <span>{this.props.mailCount}</span>
             <div className='notification-ring'/>
