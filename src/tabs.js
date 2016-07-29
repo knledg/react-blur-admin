@@ -1,5 +1,5 @@
+import _ from 'lodash';
 import React, {PropTypes} from 'react';
-import {map, find} from 'lodash';
 
 // Components
 import {Panel} from './panel';
@@ -53,7 +53,7 @@ export class Tabs extends React.Component {
   }
 
   renderTabs(tabs) {
-    return map(tabs, (tab, index) => {
+    return _.map(tabs, (tab, index) => {
       let isActive = '';
       if (
         (_.isString(this.state.activeTab) && tab.props.name === this.state.activeTab) ||
@@ -85,9 +85,9 @@ export class Tabs extends React.Component {
     // if this.state.activeTab is a string, try changing if the <Tab>s have a name and if one has a matching name, return it
     let activeTab;
     if (_.isString(this.state.activeTab)) {
-      activeTab = find(tabs, tab => tab.props.name === this.state.activeTab);
+      activeTab = _.find(tabs, tab => tab.props.name === this.state.activeTab);
     } else {
-      activeTab = find(tabs, (tab, index) => this.state.activeTab === index + 1);
+      activeTab = _.find(tabs, (tab, index) => this.state.activeTab === index + 1);
     }
 
     return activeTab ? activeTab.props.children : null;

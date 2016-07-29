@@ -1,9 +1,10 @@
 /* eslint-disable no-console */
 
 import React from 'react';
-import {shallow} from 'enzyme';
+import sinon from 'sinon';
+import {noop} from 'lodash';
 import {expect} from 'chai';
-import { noop } from 'lodash';
+import {shallow} from 'enzyme';
 
 import { Modal } from '../src';
 

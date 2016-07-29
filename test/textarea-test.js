@@ -1,7 +1,8 @@
 import React from 'react';
-import {shallow} from 'enzyme';
+import sinon from 'sinon';
+import {noop} from 'lodash';
 import {expect} from 'chai';
-import { noop } from 'lodash';
+import {shallow} from 'enzyme';
 
 import { Textarea, Button } from '../src';
 

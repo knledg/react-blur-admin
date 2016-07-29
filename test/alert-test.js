@@ -1,8 +1,9 @@
 /* eslint-disable no-console */
 
 import React from 'react';
-import {shallow} from 'enzyme';
+import sinon from 'sinon';
 import {expect} from 'chai';
+import {shallow} from 'enzyme';
 
 import { Alert } from '../src';
 
