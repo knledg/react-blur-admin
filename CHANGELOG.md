@@ -1,3 +1,9 @@
+## [v0.10.1]
+
+### Remove Karma
+- Remove karma, just use mocha and jsdom
+- Reduces test time from 33 seconds to ~2
+
 ## [v0.10.0]
 > July 28th, 2016
 
