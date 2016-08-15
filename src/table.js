@@ -9,6 +9,7 @@ export class Table extends React.Component {
     condense: React.PropTypes.bool,
     stripe: React.PropTypes.bool,
     responsive: React.PropTypes.bool,
+    style: React.PropTypes.object,
   }
 
   static defaultProps = {
@@ -30,7 +31,7 @@ export class Table extends React.Component {
 
     return (
       <div className={this.props.responsive ? 'table-responsive' : ''}>
-        <table className={classes}>
+        <table className={classes} style={this.props.style}>
           {this.props.children}
         </table>
       </div>
