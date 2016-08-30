@@ -17,6 +17,7 @@ export class Input extends React.Component {
     hasFeedbackIcon: React.PropTypes.bool,
     onValidate: React.PropTypes.func,
     onKeyDown: React.PropTypes.func,
+    defaultChecked: React.PropTypes.bool,
     value: React.PropTypes.oneOfType([
       React.PropTypes.number,
       React.PropTypes.string,
@@ -124,6 +125,7 @@ export class Input extends React.Component {
           type="radio"
           name={this.props.name}
           value={this.props.value}
+          defaultChecked={this.props.defaultChecked}
           onClick={e => this.props.onChange(this.props.value)}
           ref='input'
         />
