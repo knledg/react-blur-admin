@@ -2,7 +2,7 @@ import React from 'react';
 import sinon from 'sinon';
 import {expect} from 'chai';
 import {noop} from 'lodash';
-import {shallow} from 'enzyme';
+import {mount, shallow} from 'enzyme';
 
 import { Input } from '../src';
 
@@ -145,6 +145,12 @@ describe('<Input/>', function() {
       let component = shallow(<Input onChange={onChange} value='Hello world' type='radio'/>);
       component.find('input').simulate('click');
       expect(value).to.equal('Hello world');
+    });
+
+    it('Radio button check if defaultChecked is set', function() {
+      let component = shallow(<Input onChange={noop} value='value1' defaultChecked={true} type='radio'/>);
+      let value = component.find('input');
+      expect(value.prop('defaultChecked')).to.be.true;
     });
 
     it('Is addonLeft rendering text', function() {
