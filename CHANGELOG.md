@@ -1,3 +1,12 @@
+## [v0.10.2]
+
+### Table Component
+- Add style to props
+
+### Radio Input
+- Add defaultChecked to props
+
+
 ## [v0.10.1]
 
 ### Remove Karma
