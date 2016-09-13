@@ -2,7 +2,7 @@ import React from 'react';
 import sinon from 'sinon';
 import {expect} from 'chai';
 import {noop} from 'lodash';
-import {mount, shallow} from 'enzyme';
+import {shallow} from 'enzyme';
 
 import { Input } from '../src';
 
@@ -180,7 +180,7 @@ describe('<Input/>', function() {
     it('Shows success state', function() {
       const component = shallow(<Input onChange={noop} onValidate={() => true} />);
       expect(component.find('div.form-group').hasClass('has-success')).to.equal(true);
-      expect(component.find('i.ion-checkmark-circled').length).to.equal(1);
+      expect(component.find('i.fa-check-circle').length).to.equal(1);
     });
 
     it('Shows success state without icon', function() {
@@ -192,13 +192,13 @@ describe('<Input/>', function() {
     it('Shows fail state', function() {
       const component = shallow(<Input onChange={noop} onValidate={() => false} />);
       expect(component.find('div.form-group').hasClass('has-error')).to.equal(true);
-      expect(component.find('i.ion-android-cancel').length).to.equal(1);
+      expect(component.find('i.fa-times-circle').length).to.equal(1);
     });
 
     it('Shows warning state', function() {
       const component = shallow(<Input onChange={noop} onValidate={() => 'warning'} />);
       expect(component.find('div.form-group').hasClass('has-warning')).to.equal(true);
-      expect(component.find('i.ion-alert-circled').length).to.equal(1);
+      expect(component.find('i.fa-exclamation-triangle').length).to.equal(1);
     });
 
     it('Shows addon Right', function() {
@@ -253,4 +253,3 @@ describe('<Input/>', function() {
     });
   });
 });
-

@@ -130,10 +130,10 @@ export class EditableText extends React.Component {
             className='editable-has-buttons editable-input form-control' />
           <span className='editable-buttons button-wrapper'>
             <button type='button' onClick={e => this.onSubmit(status)} className='btn btn-primary btn-with-icon'>
-              <i className='ion-checkmark-round'></i>
+              <i className='fa fa-check'></i>
             </button>
             <button type='button' onClick={e => this.onCancelEditing()} className='btn btn-default btn-with-icon'>
-              <i className='ion-close-round'></i>
+              <i className='fa fa-close'></i>
             </button>
           </span>
           {this.renderErrorHelpLabel(status)}

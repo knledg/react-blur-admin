@@ -186,14 +186,14 @@ export class Input extends React.Component {
 
     let icon;
     if (status === 'success') {
-      icon = 'checkmark-circled';
+      icon = 'fa-check-circle';
     } else if (status === 'error') {
-      icon = 'android-cancel';
+      icon = 'fa-times-circle';
     } else {
-      icon = 'alert-circled';
+      icon = 'fa-exclamation-triangle';
     }
 
-    return <i className={`ion-${icon} form-control-feedback`} />;
+    return <i className={`fa ${icon} form-control-feedback`} />;
   }
 
   renderHelpBlock() {
