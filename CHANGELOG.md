@@ -1,3 +1,8 @@
+## [v0.11.0]
+
+- Remove IonIcons, just use Font Awesome Icons Only (#65)
+
+
 ## [v0.10.2]
 
 ### Table Component
