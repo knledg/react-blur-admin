@@ -61,6 +61,8 @@ export class Select extends React.Component {
     if (this.props.value && ! nextProps.value) {
       this.setState({activeIndex: 0, value: this.getValue(nextProps)});
     }
+
+    this.setState({value: this.getValue(nextProps)});
   }
 
   onFocus() {
@@ -133,8 +135,8 @@ export class Select extends React.Component {
   }
 
   getValue(props = this.props) {
-    if (this.props.value && this.props.onRenderValue) {
-      return this.props.onRenderValue(this.props.value);
+    if (props.value && props.onRenderValue) {
+      return props.onRenderValue(props.value);
     }
 
     const option = _.find(props.options, {value: props.value});
@@ -155,11 +157,7 @@ export class Select extends React.Component {
     return this.state.isOpen ? 'open' : '';
   }
 
-  renderPlaceholder() {
-    if (! this.props.placeholder) {
-      return <span />;
-    }
-
+  renderValue() {
     return (
       <span className='filter-option pull-left'>
         {this.state.value}
@@ -235,7 +233,7 @@ export class Select extends React.Component {
             className='btn dropdown-toggle btn-default'
             onClick={e => this.onToggleOpen()}
             onKeyDown={e => this.onHandleKeyDown(e)}>
-            {this.renderPlaceholder()}
+            {this.renderValue()}
             <span className='bs-caret'>
               <span className='caret' />
             </span>
