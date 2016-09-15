@@ -1,3 +1,9 @@
+## [v0.11.1]
+
+**Bug Fix**
+
+- Always update value when props change on Select Component
+
 ## [v0.11.0]
 
 - Remove IonIcons, just use Font Awesome Icons Only (#65)
